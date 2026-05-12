@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — CreditCompass (Premium Fintech)
+   ============================================================ */
+:root {
+  /* Brand Colors - Sophisticated Indigo/Slate */
+  --color-primary: 226 71% 40%;        /* Deep Indigo (#1E40AF) */
+  --color-primary-hover: 226 71% 35%;
+  --color-accent: 250 84% 54%;         /* Vibrant Violet for highlights */
+  
+  /* Backgrounds */
+  --color-bg: 0 0% 100%;               /* Pure White */
+  --color-bg-secondary: 220 14% 98%;   /* Ultra-light cool grey (#F8FAFC) */
+  --color-bg-tertiary: 210 20% 98%;    /* Subtle contrast */
+
+  /* Text - High Contrast Hierarchy */
+  --color-text: 222 47% 11%;           /* Near Black (#020817) */
+  --color-text-secondary: 215 16% 47%; /* Muted slate (#64748B) */
+  --color-text-tertiary: 215 14% 65%;  /* Very light text */
+
+  /* Borders - Ultra Subtle */
+  --color-border: 214 32% 91%;         /* Soft border (#E2E8F0) */
+  --color-border-hover: 214 20% 80%;
+
+  /* Radii - Modern Curves */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: hsl(var(--color-bg));
+  color: hsl(var(--color-text));
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  color: hsl(var(--color-text));
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* ============================================================
+   REUSABLE UI COMPONENTS (Stripe/Linear Aesthetic)
+   ============================================================ */
+
+/* Surface / Card Base */
+.surface-card {
+  background: #FFFFFF;
+  border: 1px solid hsl(var(--color-border));
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.surface-card:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 12px 24px rgba(0,0,0,0.04);
+  transform: translateY(-2px);
+  border-color: hsl(var(--color-border-hover));
+}
+
+/* Buttons */
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-base:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: hsl(var(--color-text));
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: 1px solid hsl(var(--color-text));
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-primary:hover {
+  background: #000000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-apply {
+  background: hsl(var(--color-primary));
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+}
+
+.btn-apply:hover {
+  background: hsl(var(--color-primary-hover));
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: hsl(var(--color-text));
+  border: 1px solid hsl(var(--color-border));
+  padding: 10px 20px;
+}
+
+.btn-secondary:hover {
+  background: hsl(var(--color-bg-secondary));
+  border-color: hsl(var(--color-border-hover));
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 100px; /* Pill shape for premium feel */
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   ANIMATIONS & UTILITIES
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--color-bg-secondary)) 25%,
+    hsl(var(--color-border)) 50%,
+    hsl(var(--color-bg-secondary)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   FILTER SIDEBAR
+   ============================================================ */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background: hsl(var(--color-bg-secondary));
+  color: hsl(var(--color-text-secondary));
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 1px solid hsl(var(--color-border));
+}
+
+.filter-chip:hover {
+  background: hsl(var(--color-bg-tertiary));
+  color: hsl(var(--color-text));
+}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+.compare-row:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--color-border));
+}
