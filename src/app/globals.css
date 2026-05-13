@@ -220,3 +220,71 @@ h1, h2, h3, h4, h5, h6 {
 .compare-row:not(:last-child) {
   border-bottom: 1px solid hsl(var(--color-border));
 }
+
+/* ============================================================
+   BLOG PROSE STYLES
+   ============================================================ */
+.prose-article h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: hsl(var(--color-text));
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+}
+
+.prose-article h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: hsl(var(--color-text));
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+}
+
+.prose-article p {
+  color: hsl(var(--color-text-secondary));
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.prose-article ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose-article ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose-article li {
+  color: hsl(var(--color-text-secondary));
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.prose-article strong {
+  font-weight: 800;
+  color: hsl(var(--color-text));
+}
+
+.prose-article em {
+  font-style: italic;
+}
+
+.prose-article a {
+  color: hsl(var(--color-primary));
+  text-decoration: underline;
+}

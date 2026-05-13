@@ -6,20 +6,23 @@ import { Menu, X, CreditCard, ChevronDown, Phone, Smartphone, ArrowRight } from 
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
-  { label: 'Loans', href: '#' },
   {
     label: 'Credit Cards',
     href: '/cards',
     children: [
+      { label: 'Browse All Cards', href: '/cards' },
+      { label: 'Compare Cards', href: '/compare' },
+      { label: 'RuPay UPI Cards', href: '/rupay-upi-cards' },
       { label: 'Cashback Cards', href: '/category/cashback' },
-      { label: 'Travel Cards', href: '/category/travel' },
+      { label: 'Travel & Lounge', href: '/category/travel' },
       { label: 'Lifetime Free', href: '/category/lifetime-free' },
-      { label: 'Premium Cards', href: '/category/premium' },
+      { label: 'Find My Card 🧭', href: '/quiz' },
     ],
   },
-  { label: 'Credit Score', href: '#' },
-  { label: 'Investment', href: '#' },
-  { label: 'Calculators', href: '#' },
+  { label: 'Loans', href: '/coming-soon' },
+  { label: 'Credit Score', href: '/coming-soon' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Best Offers 🔥', href: '/best-earning-offers' },
 ];
 
 export default function Navbar() {
@@ -31,11 +34,11 @@ export default function Navbar() {
       {/* Subtle Utility Bar */}
       <div className="bg-[hsl(var(--color-bg-secondary))] border-b border-[hsl(var(--color-border))/50 py-1.5 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end gap-6">
-          <Link href="#" className="text-[11px] font-bold text-[hsl(var(--color-text-tertiary))] hover:text-[hsl(var(--color-primary))] flex items-center gap-1.5 transition-colors">
+          <Link href="/coming-soon" className="text-[11px] font-bold text-[hsl(var(--color-text-tertiary))] hover:text-[hsl(var(--color-primary))] flex items-center gap-1.5 transition-colors">
             <Phone className="w-3 h-3" />
             Talk to an Expert
           </Link>
-          <Link href="#" className="text-[11px] font-bold text-[hsl(var(--color-text-tertiary))] hover:text-[hsl(var(--color-primary))] flex items-center gap-1.5 transition-colors">
+          <Link href="/coming-soon" className="text-[11px] font-bold text-[hsl(var(--color-text-tertiary))] hover:text-[hsl(var(--color-primary))] flex items-center gap-1.5 transition-colors">
             <Smartphone className="w-3 h-3" />
             Download App
           </Link>
@@ -104,7 +107,7 @@ export default function Navbar() {
             <Link href="/admin/login" className="text-[14px] font-bold text-[hsl(var(--color-text-secondary))] hover:text-[hsl(var(--color-primary))] transition-colors">
               Sign In
             </Link>
-            <Link href="/get-started" className="btn-base btn-apply px-6 py-2.5 text-xs shadow-md">
+            <Link href="/cards" className="btn-base btn-apply px-6 py-2.5 text-xs shadow-md">
               Get Started
             </Link>
           </div>
@@ -157,7 +160,7 @@ export default function Navbar() {
                 Sign In
               </Link>
               <Link
-                href="/get-started"
+                href="/cards"
                 onClick={() => setIsOpen(false)}
                 className="btn-base btn-apply w-full py-4 text-sm font-bold shadow-lg"
               >

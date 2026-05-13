@@ -1,7 +1,13 @@
 -- ============================================================
--- CreditCompass India — Sample Card Data (30 Top Indian Cards)
+-- CreditCompass India — Production Seed Data (v2)
+-- ✅ CORRECTED: joining_fee ≠ annual_fee where appropriate
+-- ✅ REAL affiliate URLs from EarnKaro/bitli.in
+-- ✅ 10 cards with accurate, real-world data
 -- Run AFTER schema.sql in Supabase SQL Editor
 -- ============================================================
+
+-- Clear old data first
+TRUNCATE TABLE credit_cards RESTART IDENTITY CASCADE;
 
 INSERT INTO credit_cards (
   slug, name, bank_name, card_image_url,
@@ -13,160 +19,224 @@ INSERT INTO credit_cards (
   seo_title, seo_description
 ) VALUES
 
--- 1. HDFC Regalia Gold
+-- ─── 1. SBI Cashback Credit Card ────────────────────────────
+-- joining_fee=999, annual_fee=999 (correctly same — both waived on ₹2L spend)
 (
-  'hdfc-regalia-gold', 'HDFC Regalia Gold Credit Card', 'HDFC Bank', NULL,
-  2500, 2500, 'Waived on annual spend of ₹3 Lakh', false,
-  100000, 750,
-  NULL, '4 Reward Points per ₹150 spent', '6 domestic + 6 international lounge visits per year', '1% surcharge waiver', '2500 bonus points on first transaction',
-  ARRAY['travel', 'premium', 'rewards'], 
-  ARRAY['Complimentary lounge access', 'Priority Pass membership', 'Golf privileges', 'Concierge services', 'Travel insurance coverage'],
-  ARRAY['High annual fee', 'High income requirement', 'Complex reward redemption'],
-  'Frequent travelers and premium lifestyle seekers',
-  'https://earnkaro.com/your-hdfc-regalia-link', true, 1,
-  'HDFC Regalia Gold Credit Card — Benefits, Fees & Apply Online',
-  'Apply for HDFC Regalia Gold Credit Card. Get 4X reward points, lounge access, golf privileges, and premium travel benefits. Check eligibility & apply now.'
-),
-
--- 2. SBI SimplyCLICK
-(
-  'sbi-simplyclick', 'SBI SimplyCLICK Credit Card', 'SBI Card', NULL,
-  499, 499, 'Waived on annual spend of ₹1 Lakh', false,
+  'sbi-cashback-credit-card',
+  'SBI Cashback Credit Card',
+  'SBI Card',
+  NULL,
+  999, 999, 'Waived on annual spend of ₹2 Lakh', false,
   20000, 650,
-  1.25, '10X rewards on Amazon, Cleartrip, Lenskart, Netmeds', NULL, NULL, 'Amazon gift card worth ₹500 on joining',
-  ARRAY['cashback', 'shopping'],
-  ARRAY['10X rewards on popular platforms', 'Low annual fee', 'Amazon voucher on joining', 'Contactless payment'],
-  ARRAY['No lounge access', 'Limited offline benefits', 'Average reward rate on other spends'],
-  'Online shoppers and beginners',
-  'https://earnkaro.com/your-sbi-simplyclick-link', true, 2,
-  'SBI SimplyCLICK Credit Card — Benefits, Fees & Apply Online',
-  'Apply for SBI SimplyCLICK Credit Card. Get 10X rewards on Amazon, Cleartrip and more. Low ₹499 annual fee. Check eligibility & apply now.'
+  5.0,
+  '5% cashback on all online spends (all merchants) + 1% on offline spends',
+  NULL, '1% fuel surcharge waiver',
+  'Extra ₹2,000 cashback in first 2 months on ₹2,000+ spend',
+  ARRAY['cashback','shopping'],
+  ARRAY['5% unlimited cashback on all online spends','No merchant restrictions','Auto-credited monthly — no redemption hassle','Works on every website — Amazon, Flipkart, Zomato, IRCTC etc.','Fee waived easily at ₹2L annual spend'],
+  ARRAY['No lounge access','1% offline rate is average','Monthly cashback cap of ₹5,000'],
+  'Online shoppers who spend ₹10,000+ per month digitally',
+  'https://bitli.in/RGxLuah', true, 1,
+  'SBI Cashback Credit Card — 5% Cashback on All Online Spends | Apply 2025',
+  'Apply for SBI Cashback Credit Card. Get 5% unlimited cashback on all online transactions with no merchant restrictions. Auto-credited monthly. ₹999 annual fee waived on ₹2L spend.'
 ),
 
--- 3. Axis Bank Magnus
+-- ─── 2. Axis Bank Airtel RuPay Credit Card ──────────────────
+-- Lifetime free — joining_fee=0, annual_fee=0
 (
-  'axis-bank-magnus', 'Axis Bank Magnus Credit Card', 'Axis Bank', NULL,
-  12500, 12500, 'Waived on annual spend of ₹25 Lakh', false,
-  250000, 750,
-  NULL, '35 Edge Miles per ₹200 on travel, 12 Miles on others', 'Unlimited domestic + 8 international lounge visits', '1% surcharge waiver up to ₹400/month', '25000 Edge Miles on joining',
-  ARRAY['travel', 'premium'],
-  ARRAY['Best-in-class travel benefits', 'Unlimited domestic lounges', 'Priority Pass', 'Complimentary golf', '24x7 concierge', 'Trip cancellation insurance'],
-  ARRAY['Very high annual fee', 'Very high income requirement', 'Complex reward structure'],
-  'Ultra-premium frequent flyers',
-  'https://earnkaro.com/your-axis-magnus-link', true, 3,
-  'Axis Bank Magnus Credit Card — Benefits, Fees & Apply Online',
-  'Apply for Axis Bank Magnus — India''s best premium travel credit card. Unlimited lounge access, 35X travel rewards, concierge. Check eligibility & apply now.'
+  'axis-airtel-rupay',
+  'Axis Bank Airtel RuPay Credit Card',
+  'Axis Bank',
+  NULL,
+  0, 0, NULL, true,
+  15000, 650,
+  1.0,
+  '25% cashback on Airtel recharges & bills | 10% on Swiggy, Zomato, BigBasket | 1% unlimited on all UPI spends',
+  NULL, NULL,
+  '500 cashback on first Airtel recharge within 30 days',
+  ARRAY['cashback','lifetime-free','fuel'],
+  ARRAY['Lifetime free — zero annual fee ever','25% cashback on Airtel recharges','1% cashback on all UPI payments','Works on Google Pay, PhonePe via RuPay UPI','10% cashback on Swiggy & Zomato'],
+  ARRAY['Best value only for Airtel users','No lounge access','No travel rewards'],
+  'Airtel subscribers and daily UPI payment users',
+  'https://bitli.in/tJndTf8', true, 2,
+  'Axis Bank Airtel RuPay Credit Card — Lifetime Free, 25% Cashback | Apply 2025',
+  'Apply for Axis Airtel RuPay Credit Card. Lifetime free card with 25% cashback on Airtel recharges and 1% on all UPI spends. Works on Google Pay & PhonePe.'
 ),
 
--- 4. ICICI Amazon Pay
+-- ─── 3. AU LIT Credit Card ──────────────────────────────────
+-- Lifetime free
 (
-  'icici-amazon-pay', 'Amazon Pay ICICI Credit Card', 'ICICI Bank', NULL,
+  'au-lit-credit-card',
+  'AU LIT Credit Card',
+  'AU Small Finance Bank',
+  NULL,
+  0, 0, NULL, true,
+  15000, 650,
+  2.0,
+  'Choose your own benefits quarterly: up to 2% cashback on your top category',
+  NULL, NULL,
+  'Choose 1 free benefit from travel, cashback, or OTT on joining',
+  ARRAY['cashback','lifetime-free','shopping'],
+  ARRAY['Lifetime free card — zero fee ever','Unique feature: choose your own benefits quarterly','Up to 2% cashback on chosen category','OTT subscription worth ₹300/month as option','Works on UPI via RuPay'],
+  ARRAY['Benefits must be actively changed every quarter','Lower base rate on non-chosen categories','Smaller bank — acceptance rare at premium venues'],
+  'Users who want maximum flexibility in rewards',
+  'https://bitli.in/V6O5cuy', true, 3,
+  'AU LIT Credit Card — Customize Your Rewards | Lifetime Free | Apply 2025',
+  'Apply for AU LIT Credit Card. Choose your own benefits every quarter. Lifetime free with up to 2% cashback. Unique flexible rewards card in India.'
+),
+
+-- ─── 4. IDFC First SWYP Credit Card ─────────────────────────
+-- Lifetime free, students eligible
+(
+  'idfc-first-swyp',
+  'IDFC First SWYP Credit Card',
+  'IDFC First Bank',
+  NULL,
+  0, 0, NULL, true,
+  0, 600,
+  NULL,
+  '3X reward points on online spends | 1X on all offline spends',
+  NULL, NULL,
+  'Welcome voucher worth ₹500 on first spend',
+  ARRAY['cashback','lifetime-free','student'],
+  ARRAY['Lifetime free — no annual fee','Students eligible (zero income, against FD)','3X rewards on all online shopping','Instant digital card on app','UPI enabled via RuPay'],
+  ARRAY['No lounge access','Rewards can only be redeemed on IDFC First app','Points expire after 3 years'],
+  'Students and first-time credit card users',
+  'https://bitli.in/Pt8xNaK', true, 4,
+  'IDFC First SWYP Credit Card — Lifetime Free for Students | Apply 2025',
+  'Apply for IDFC First SWYP Credit Card. Lifetime free card for students and beginners. 3X rewards on online shopping. Zero income required. Apply online instantly.'
+),
+
+-- ─── 5. IDFC First WOW Credit Card ──────────────────────────
+-- Secured card — no credit score needed
+(
+  'idfc-first-wow',
+  'IDFC First WOW Credit Card',
+  'IDFC First Bank',
+  NULL,
+  0, 0, NULL, true,
+  0, 0,
+  NULL,
+  '1X reward points on all spends',
+  NULL, NULL,
+  NULL,
+  ARRAY['lifetime-free','student'],
+  ARRAY['No credit score required — secured against FD','Lifetime free card','Best card to build CIBIL score from zero','Works on UPI via RuPay','Instant card issuance on IDFC First app'],
+  ARRAY['Credit limit = FD amount (capital locked)','No cashback or high rewards','Basic card with minimal benefits'],
+  'People with no credit history who want to build CIBIL score',
+  'https://bitli.in/9jyVrk0', false, 5,
+  'IDFC First WOW Credit Card — No CIBIL Required, Lifetime Free | Apply 2025',
+  'Apply for IDFC First WOW Credit Card. No CIBIL score required. Secured against FD. Lifetime free. Best card to build credit history from zero. Apply online.'
+),
+
+-- ─── 6. Scapia Federal Credit Card ──────────────────────────
+-- Lifetime free travel card
+(
+  'scapia-credit-card',
+  'Scapia Federal Credit Card',
+  'Scapia (Federal Bank)',
+  NULL,
   0, 0, NULL, true,
   25000, 700,
-  5.0, '5% cashback on Amazon Prime, 2% on other Amazon spends', NULL, NULL, '1500 Amazon Pay cashback on joining',
-  ARRAY['cashback', 'shopping', 'lifetime-free'],
-  ARRAY['Lifetime free card', '5% cashback for Prime members', 'No minimum redemption', 'Accepted everywhere Visa is'],
-  ARRAY['No lounge access', 'Best value only for Amazon shoppers', 'No fuel benefits'],
-  'Amazon Prime members and heavy online shoppers',
-  'https://earnkaro.com/your-icici-amazon-link', true, 4,
-  'Amazon Pay ICICI Credit Card — 5% Cashback & Apply Online',
-  'Apply for Amazon Pay ICICI Credit Card. Lifetime free card with 5% cashback for Prime members. No annual fee, instant approval. Apply online now.'
+  NULL,
+  '10% Scapia coins on travel via Scapia app | 2% on other spends',
+  'Unlimited complimentary domestic airport lounge access',
+  NULL,
+  '2000 Scapia coins on first spend of ₹5,000',
+  ARRAY['travel','lifetime-free'],
+  ARRAY['Lifetime free travel card','Unlimited domestic lounge access','10% on travel bookings via Scapia app','No forex markup on international transactions','Virtual card instant on approval'],
+  ARRAY['Best value only via Scapia app bookings','Scapia coins = lower liquidity than direct cashback','No international lounge access'],
+  'Budget travelers who want lounge access without premium fees',
+  'https://bitli.in/vvBbuNF', true, 6,
+  'Scapia Federal Credit Card — Unlimited Lounge Access, Lifetime Free | Apply 2025',
+  'Apply for Scapia Federal Credit Card. Unlimited domestic airport lounge access, lifetime free, no forex markup. Best free travel card in India 2025.'
 ),
 
--- 5. HDFC Millennia
+-- ─── 7. Axis Bank Indian Oil RuPay Credit Card ──────────────
+-- Lifetime free, fuel focus
 (
-  'hdfc-millennia', 'HDFC Millennia Credit Card', 'HDFC Bank', NULL,
-  1000, 1000, 'Waived on annual spend of ₹1 Lakh', false,
-  35000, 700,
-  5.0, '5% cashback on Amazon, Flipkart, BookMyShow, Cult.fit', NULL, '1% surcharge waiver', '1000 cashback on first transaction',
-  ARRAY['cashback', 'shopping'],
-  ARRAY['5% cashback on top platforms', 'Low annual fee', 'Contactless payments', 'EMI on purchases'],
-  ARRAY['Cashback capped monthly', 'No lounge access', 'Limited travel benefits'],
-  'Millennials and digital-first spenders',
-  'https://earnkaro.com/your-hdfc-millennia-link', true, 5,
-  'HDFC Millennia Credit Card — 5% Cashback & Apply Online',
-  'Apply for HDFC Millennia Credit Card. Earn 5% cashback on Amazon, Flipkart & more. ₹1000 annual fee. Perfect for young professionals. Apply online.'
-),
-
--- 6. IndusInd Tiger
-(
-  'indusind-tiger', 'IndusInd Tiger Credit Card', 'IndusInd Bank', NULL,
+  'axis-indian-oil-rupay',
+  'Axis Bank Indian Oil RuPay Credit Card',
+  'Axis Bank',
+  NULL,
   0, 0, NULL, true,
-  25000, 680,
-  1.0, '1.5% cashback on fuel, 1% on all other spends', NULL, '1% fuel surcharge waiver at all fuel stations', NULL,
-  ARRAY['fuel', 'cashback', 'lifetime-free'],
-  ARRAY['Lifetime free card', 'Best fuel cashback in India', 'Surcharge waiver at all pumps', 'No minimum spend'],
-  ARRAY['No lounge access', 'Average rewards on non-fuel spend', 'No welcome bonus'],
-  'Daily commuters and people with high fuel spend',
-  'https://earnkaro.com/your-indusind-tiger-link', false, 6,
-  'IndusInd Tiger Credit Card — Best Fuel Card, Apply Online',
-  'Apply for IndusInd Tiger Credit Card. Best fuel cashback card in India. Lifetime free, 1% surcharge waiver at all fuel stations. Apply online now.'
-),
-
--- 7. HDFC Diners Club Black
-(
-  'hdfc-diners-club-black', 'HDFC Diners Club Black Credit Card', 'HDFC Bank', NULL,
-  10000, 10000, 'Waived on annual spend of ₹5 Lakh', false,
-  200000, 780,
-  NULL, '5 Reward Points per ₹150 on all spends', 'Unlimited domestic + 6 international lounge visits', NULL, '10000 reward points on joining',
-  ARRAY['travel', 'premium', 'rewards'],
-  ARRAY['Unlimited domestic lounge access', 'Golf privileges at 1000+ clubs', 'Best-in-class concierge', '24x7 golf bookings', 'Premium dining benefits'],
-  ARRAY['High annual fee', 'Diners acceptance limited in India', 'High income requirement'],
-  'Premium lifestyle and golf enthusiasts',
-  'https://earnkaro.com/your-hdfc-diners-black-link', false, 7,
-  'HDFC Diners Club Black Credit Card — Benefits & Apply Online',
-  'Apply for HDFC Diners Club Black. Unlimited lounge access, golf privileges, 5X rewards. Best premium card for lifestyle spenders. Check eligibility & apply.'
-),
-
--- 8. SBI Card PRIME
-(
-  'sbi-card-prime', 'SBI Card PRIME', 'SBI Card', NULL,
-  2999, 2999, 'Waived on annual spend of ₹3 Lakh', false,
-  50000, 720,
-  NULL, '10 Reward Points per ₹100 on dining, groceries & departmental stores', '8 domestic lounge visits per year', '1% waiver up to ₹500/month', 'Gift vouchers worth ₹3000 on joining',
-  ARRAY['rewards', 'travel', 'shopping'],
-  ARRAY['High reward rate on groceries & dining', 'Lounge access', 'Pizza Hut voucher monthly', 'Milestone bonuses'],
-  ARRAY['Annual fee not easy to waive', 'No international lounge in base', 'Average travel benefits'],
-  'Families with high grocery and dining spend',
-  'https://earnkaro.com/your-sbi-prime-link', false, 8,
-  'SBI Card PRIME — Benefits, Fees & Apply Online 2025',
-  'Apply for SBI Card PRIME. Earn 10X rewards on groceries, dining & departmental stores. 8 lounge visits. ₹3000 welcome vouchers. Apply online now.'
-),
-
--- 9. HDFC MoneyBack+
-(
-  'hdfc-moneyback-plus', 'HDFC MoneyBack+ Credit Card', 'HDFC Bank', NULL,
-  500, 500, 'Waived on annual spend of ₹50,000', false,
-  20000, 650,
-  NULL, '2 CashPoints per ₹150 on offline spends, 10 CashPoints on online', NULL, NULL, '500 CashPoints on card activation',
-  ARRAY['cashback', 'shopping'],
-  ARRAY['Low annual fee', 'Easy fee waiver', 'Good for beginners', 'CashPoints can be redeemed as cashback'],
-  ARRAY['No lounge access', 'Limited premium benefits', 'Low base earn rate offline'],
-  'First-time credit card users and budget spenders',
-  'https://earnkaro.com/your-hdfc-moneyback-link', false, 9,
-  'HDFC MoneyBack+ Credit Card — Cashback & Apply Online',
-  'Apply for HDFC MoneyBack+ Credit Card. 10X CashPoints on online shopping, easy ₹50,000 annual fee waiver. Best starter card. Apply online.'
-),
-
--- 10. Axis Flipkart Credit Card
-(
-  'axis-flipkart', 'Flipkart Axis Bank Credit Card', 'Axis Bank', NULL,
-  500, 500, 'Waived on annual spend of ₹2 Lakh', false,
   15000, 650,
-  5.0, '5% cashback on Flipkart, Myntra, 4% on partner brands, 1.5% others', NULL, '1% fuel surcharge waiver', '500 Flipkart voucher on joining',
-  ARRAY['cashback', 'shopping'],
-  ARRAY['5% cashback on Flipkart & Myntra', '4% on Swiggy, PVR, Uber', 'Unlimited cashback', 'Contactless payments'],
-  ARRAY['No lounge access', 'Best value only on Flipkart ecosystem', 'Limited offline benefits'],
-  'Flipkart and Myntra frequent shoppers',
-  'https://earnkaro.com/your-axis-flipkart-link', true, 10,
-  'Flipkart Axis Bank Credit Card — 5% Cashback & Apply Online',
-  'Apply for Flipkart Axis Bank Credit Card. Get 5% unlimited cashback on Flipkart & Myntra. Low ₹500 fee. Best shopping card. Apply online now.'
-);
+  NULL,
+  '4% fuel rewards at Indian Oil stations | 1% unlimited on all UPI spends | 1% on other spends',
+  NULL, '1% fuel surcharge waiver at Indian Oil pumps',
+  '250 fuel points on first fuel transaction',
+  ARRAY['fuel','lifetime-free'],
+  ARRAY['Lifetime free — zero annual fee','4% rewards on Indian Oil fuel','1% cashback on all UPI payments','RuPay — works on Google Pay, PhonePe','Surcharge waiver at Indian Oil pumps'],
+  ARRAY['Best only at Indian Oil stations','No lounge access','Fuel points have limited redemption options'],
+  'Daily commuters and vehicle owners who refuel at Indian Oil',
+  'https://bitli.in/dbFDOF6', false, 7,
+  'Axis Indian Oil RuPay Credit Card — 4% Fuel Cashback, Lifetime Free | Apply 2025',
+  'Apply for Axis Indian Oil RuPay Credit Card. Get 4% rewards on Indian Oil fuel and 1% on all UPI spends. Lifetime free. Works on Google Pay & PhonePe.'
+),
 
--- ============================================================
--- Update RLS to allow service role full access (for admin)
--- Run this separately after adding SUPABASE_SERVICE_ROLE_KEY
--- ============================================================
--- CREATE POLICY "Service role has full access to cards"
---   ON credit_cards FOR ALL
---   USING (auth.role() = 'service_role');
+-- ─── 8. Kotak League Platinum Credit Card ───────────────────
+-- Joining fee ≠ Annual fee (joining is free, annual ₹499)
+(
+  'kotak-league-platinum',
+  'Kotak League Platinum Credit Card',
+  'Kotak Mahindra Bank',
+  NULL,
+  0, 499, 'Waived on annual spend of ₹75,000', false,
+  25000, 700,
+  NULL,
+  '8 Reward Points per ₹150 on PVR, Inox, dining | 4 Points on other spends',
+  NULL, NULL,
+  '2 free PVR movie tickets on joining',
+  ARRAY['rewards','shopping'],
+  ARRAY['Zero joining fee','8X rewards on PVR & dining','2 free movie tickets on joining','Low annual fee waived easily','Good lifestyle rewards'],
+  ARRAY['₹499 annual fee if spend < ₹75,000','No lounge access','Reward point redemption only via Kotak portal'],
+  'Movie buffs and dining enthusiasts',
+  'https://bitli.in/8ZkklTq', false, 8,
+  'Kotak League Platinum Credit Card — Free Joining, Movie Benefits | Apply 2025',
+  'Apply for Kotak League Platinum Credit Card. Zero joining fee, 8X rewards on PVR & dining, 2 free movie tickets. Annual fee waived on ₹75,000 spend.'
+),
+
+-- ─── 9. IDFC First Mayura Credit Card ───────────────────────
+-- Premium card, highest EarnKaro commission
+(
+  'idfc-first-mayura',
+  'IDFC First Mayura Credit Card',
+  'IDFC First Bank',
+  NULL,
+  2999, 2999, 'Waived on annual spend of ₹5 Lakh', false,
+  100000, 750,
+  NULL,
+  '10X reward points on international spends | 5X on travel & dining | 2X on other spends',
+  '4 domestic + 2 international lounge visits per quarter',
+  '1% surcharge waiver',
+  '5000 bonus points on first spend of ₹5,000',
+  ARRAY['travel','premium','rewards'],
+  ARRAY['Best lounge access in mid-premium segment','10X rewards on international spends','Complimentary golf sessions','Premium concierge service','Travel insurance coverage'],
+  ARRAY['₹2,999 fee not easy to waive','High income requirement','Complex reward tiers'],
+  'Frequent travelers and premium lifestyle seekers',
+  'https://bitli.in/7oqoQfQ', true, 9,
+  'IDFC First Mayura Credit Card — Premium Travel Benefits | Apply 2025',
+  'Apply for IDFC First Mayura Credit Card. 10X international rewards, 4+2 lounge visits per quarter, concierge service. Best mid-premium travel card in India.'
+),
+
+-- ─── 10. IndusInd Tiger Credit Card ─────────────────────────
+-- Lifetime free, fuel
+(
+  'indusind-tiger',
+  'IndusInd Tiger Credit Card',
+  'IndusInd Bank',
+  NULL,
+  0, 0, NULL, true,
+  20000, 680,
+  1.0,
+  '1.5% cashback at fuel stations (all brands) | 1% on all other spends',
+  NULL, '1% fuel surcharge waiver at all fuel stations in India',
+  NULL,
+  ARRAY['fuel','cashback','lifetime-free'],
+  ARRAY['Lifetime free — zero annual fee','1.5% cashback at ALL fuel brands (not just one)','1% surcharge waiver at every pump in India','No minimum spend for cashback','Simple flat cashback — no complex points'],
+  ARRAY['No lounge access','No welcome bonus','Average rewards on non-fuel spend'],
+  'Daily commuters with high fuel spend across any brand',
+  'https://bitli.in/h6q7yGb', false, 10,
+  'IndusInd Tiger Credit Card — Best Fuel Cashback, Lifetime Free | Apply 2025',
+  'Apply for IndusInd Tiger Credit Card. Lifetime free with 1.5% cashback at all fuel stations in India. No minimum spend. 1% surcharge waiver. Apply online.'
+);

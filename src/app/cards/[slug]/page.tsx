@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { formatRupee, CATEGORY_ICONS, CATEGORY_LABELS, CATEGORY_COLORS, cn } from '@/lib/utils';
 import { CreditCard } from '@/types';
+import { getEarnKaroOffer } from '@/data/earnkaro-offers';
+import ApplyButton from '@/components/ui/ApplyButton';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -56,6 +58,9 @@ export default async function CardDetailPage({ params }: PageProps) {
   }
 
   const typedCard = card as CreditCard;
+  const ekOffer = getEarnKaroOffer(typedCard.slug);
+  // Use real EarnKaro link if available, otherwise fall back to card's affiliate_url
+  const applyUrl = ekOffer?.earnkaro_url ?? typedCard.affiliate_url;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -142,20 +147,26 @@ export default async function CardDetailPage({ params }: PageProps) {
                 </div>
 
                 {/* CTA Button */}
-                <form action="/api/track-click" method="POST" target="_blank">
-                  <input type="hidden" name="card_id" value={typedCard.id} />
-                  <input type="hidden" name="card_name" value={typedCard.name} />
-                  <input type="hidden" name="card_slug" value={typedCard.slug} />
-                  <input type="hidden" name="affiliate_url" value={typedCard.affiliate_url} />
-                  <button
-                    id="apply-now-hero-button"
-                    type="submit"
-                    className="btn-base btn-apply px-8 py-3.5 text-base gap-3 shadow-lg"
-                  >
-                    Apply Now on {typedCard.bank_name}
-                    <ExternalLink className="w-5 h-5" />
-                  </button>
-                </form>
+                <ApplyButton 
+                  cardId={typedCard.id}
+                  cardName={typedCard.name}
+                  cardSlug={typedCard.slug}
+                  affiliateUrl={applyUrl}
+                  bankName={typedCard.bank_name}
+                />
+
+                {/* EarnKaro commission callout */}
+                {ekOffer && (
+                  <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-xl">
+                    <span className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <ShieldCheck className="w-3 h-3 text-white" />
+                    </span>
+                    <p className="text-xs text-emerald-800 font-semibold">
+                      Apply via our link &amp; earn{' '}
+                      <span className="font-extrabold text-emerald-700">₹{ekOffer.commission.toLocaleString('en-IN')} cashback</span>{' '}in your EarnKaro wallet.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -339,20 +350,14 @@ export default async function CardDetailPage({ params }: PageProps) {
             <p className="text-white/70 mb-6 text-sm font-medium">
               Takes less than 5 minutes. No hidden fees in the application.
             </p>
-            <form action="/api/track-click" method="POST" target="_blank">
-              <input type="hidden" name="card_id" value={typedCard.id} />
-              <input type="hidden" name="card_name" value={typedCard.name} />
-              <input type="hidden" name="card_slug" value={typedCard.slug} />
-              <input type="hidden" name="affiliate_url" value={typedCard.affiliate_url} />
-              <button
-                id="apply-now-bottom-button"
-                type="submit"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[hsl(var(--color-primary))] rounded-xl font-extrabold text-base hover:bg-blue-50 transition-colors shadow-lg"
-              >
-                Apply Now on {typedCard.bank_name}
-                <ExternalLink className="w-5 h-5" />
-              </button>
-            </form>
+            <ApplyButton 
+              cardId={typedCard.id}
+              cardName={typedCard.name}
+              cardSlug={typedCard.slug}
+              affiliateUrl={applyUrl}
+              bankName={typedCard.bank_name}
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[hsl(var(--color-primary))] rounded-xl font-extrabold text-base hover:bg-blue-50 transition-colors shadow-lg"
+            />
           </div>
         </div>
       </main>

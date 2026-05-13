@@ -4,8 +4,9 @@ import { createClient } from '@/lib/supabase/server';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CardCard from '@/components/cards/CardCard';
-import { ArrowRight, Star, Zap, Percent, BadgePercent } from 'lucide-react';
+import { ArrowRight, Star, Zap, Percent, BadgePercent, BadgeIndianRupee, TrendingUp } from 'lucide-react';
 import { CreditCard, Category } from '@/types';
+import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 
 export const metadata: Metadata = {
   title: 'CreditCompass India — Find the Best Credit Card',
@@ -55,6 +56,60 @@ export default async function Home() {
               <span>SBI CARD</span>
               <span>ICICI BANK</span>
               <span>AXIS BANK</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* 1.5 UPI TEASER SECTION */}
+      <section className="bg-slate-900 py-24 overflow-hidden relative">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,hsl(var(--color-primary)/0.2)_0%,transparent_50%)]" />
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-6 border border-blue-500/30">
+                Trending in India
+              </span>
+              <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-8 tracking-tighter">
+                Earn Rewards on <br /> <span className="text-blue-500">Every UPI Scan.</span>
+              </h2>
+              <p className="text-slate-400 text-lg md:text-xl font-medium mb-10 max-w-xl">
+                Link your RuPay Credit Card to UPI and stop missing out on rewards for your daily chai, groceries, and fuel.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/rupay-upi-cards" className="px-8 py-4 bg-white text-slate-900 rounded-2xl font-bold text-sm hover:scale-105 transition-transform text-center">
+                  See Best UPI Cards
+                </Link>
+                <Link href="/rupay-upi-cards#calculator" className="px-8 py-4 bg-slate-800 text-white border border-slate-700 rounded-2xl font-bold text-sm hover:bg-slate-700 transition-colors text-center">
+                  Calculate Savings
+                </Link>
+              </div>
+            </div>
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-slate-800 border border-slate-700 p-10 rounded-[2rem] shadow-2xl">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-lg">
+                    <Zap className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Savings Potential</p>
+                    <p className="text-white text-lg font-bold">Average UPI User</p>
+                  </div>
+                </div>
+                <div className="space-y-6">
+                  <div className="flex justify-between items-end">
+                    <p className="text-slate-400 text-sm font-medium">Monthly UPI Spend</p>
+                    <p className="text-white text-xl font-bold">₹15,000</p>
+                  </div>
+                  <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                    <div className="h-full w-2/3 bg-blue-500 rounded-full" />
+                  </div>
+                  <div className="pt-6 border-t border-slate-700 flex justify-between items-center">
+                    <p className="text-slate-400 text-sm font-medium">Annual Cashback</p>
+                    <p className="text-blue-400 text-4xl font-black tracking-tighter">₹3,600+</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -128,6 +183,50 @@ export default async function Home() {
                 No featured cards found.
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. HOT EARNING OFFERS SECTION */}
+      <section className="bg-gradient-to-br from-slate-900 to-emerald-950 py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold uppercase tracking-widest mb-4">
+                <TrendingUp className="w-3 h-3" /> Live EarnKaro Offers
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-2">Hot Earning Offers 🔥</h2>
+              <p className="text-slate-400 font-medium">Apply &amp; earn real cashback — up to ₹2,800 per approval.</p>
+            </div>
+            <Link href="/best-earning-offers" className="flex-shrink-0 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-sm transition-colors">
+              See All {EARNKARO_OFFERS.length} Offers →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {EARNKARO_OFFERS.slice(0, 3).map((offer, idx) => (
+              <Link
+                key={offer.card_slug}
+                href={`/cards/${offer.card_slug}`}
+                className="group bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 rounded-2xl p-6 transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">#{idx + 1} Pick</span>
+                  <BadgeIndianRupee className="w-5 h-5 text-emerald-400" />
+                </div>
+                <p className="font-bold text-white text-lg mb-1 leading-tight">{offer.card_name}</p>
+                <p className="text-sm text-slate-400 font-medium mb-4">{offer.bank_name}</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">You Earn</p>
+                    <p className="text-2xl font-black text-emerald-400">₹{offer.commission.toLocaleString('en-IN')}</p>
+                  </div>
+                  <div className="px-4 py-2 bg-emerald-600 group-hover:bg-emerald-500 rounded-xl text-white text-sm font-bold transition-colors">
+                    Apply Now
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   Star, CheckCircle, ExternalLink, CreditCard as CardIcon,
-  ArrowRight, Plus, GitCompare
+  ArrowRight, Plus, GitCompare, BadgeIndianRupee
 } from 'lucide-react';
 import { CreditCard } from '@/types';
 import { cn, formatRupee, CATEGORY_COLORS, CATEGORY_LABELS } from '@/lib/utils';
+import { getEarnKaroOffer } from '@/data/earnkaro-offers';
 
 interface CardCardProps {
   card: CreditCard;
@@ -19,12 +20,16 @@ interface CardCardProps {
 
 export default function CardCard({ card, onCompare, isInCompare, onApplyClick }: CardCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const ekOffer = getEarnKaroOffer(card.slug);
 
   const handleApplyClick = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (onApplyClick) {
       onApplyClick(card);
     }
+    // Use EarnKaro link if available, otherwise fall back to card's affiliate_url
+    const finalUrl = ekOffer?.earnkaro_url ?? card.affiliate_url;
+
     // Track click & redirect
     try {
       await fetch('/api/track-click', {
@@ -34,14 +39,15 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
           card_id: card.id,
           card_name: card.name,
           card_slug: card.slug,
-          affiliate_url: card.affiliate_url,
+          affiliate_url: finalUrl,
         }),
       });
     } catch {
       // Non-blocking
     }
-    window.open(card.affiliate_url, '_blank', 'noopener,noreferrer');
+    window.open(finalUrl, '_blank', 'noopener,noreferrer');
   };
+
 
   return (
     <div
@@ -57,6 +63,14 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
         <div className="absolute top-0 right-6 px-3 py-1 bg-[hsl(var(--color-primary))] text-white rounded-b-lg shadow-sm flex items-center gap-1.5 z-10">
           <Star className="w-3 h-3 fill-white" />
           <span className="text-[10px] font-extrabold uppercase tracking-widest">Recommended</span>
+        </div>
+      )}
+
+      {/* EarnKaro Payout Badge */}
+      {ekOffer && (
+        <div className="absolute top-0 left-6 flex items-center gap-1.5 px-3 py-1 bg-emerald-600 text-white rounded-b-lg shadow-sm z-10">
+          <BadgeIndianRupee className="w-3 h-3" />
+          <span className="text-[10px] font-extrabold uppercase tracking-widest">Earn ₹{ekOffer.commission.toLocaleString('en-IN')}</span>
         </div>
       )}
 
