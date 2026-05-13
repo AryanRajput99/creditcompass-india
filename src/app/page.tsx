@@ -205,27 +205,33 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {EARNKARO_OFFERS.slice(0, 3).map((offer, idx) => (
-              <Link
+              <div
                 key={offer.card_slug}
-                href={`/cards/${offer.card_slug}`}
                 className="group bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-white/10 rounded-2xl p-6 transition-all"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">#{idx + 1} Pick</span>
                   <BadgeIndianRupee className="w-5 h-5 text-emerald-400" />
                 </div>
-                <p className="font-bold text-white text-lg mb-1 leading-tight">{offer.card_name}</p>
+                <Link href={`/cards/${offer.card_slug}`} className="block group/title">
+                  <p className="font-bold text-white text-lg mb-1 leading-tight group-hover/title:text-blue-400 transition-colors">{offer.card_name}</p>
+                </Link>
                 <p className="text-sm text-slate-400 font-medium mb-4">{offer.bank_name}</p>
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-0.5">You Earn</p>
                     <p className="text-2xl font-black text-emerald-400">₹{offer.commission.toLocaleString('en-IN')}</p>
                   </div>
-                  <div className="px-4 py-2 bg-emerald-600 group-hover:bg-emerald-500 rounded-xl text-white text-sm font-bold transition-colors">
+                  <a 
+                    href={offer.earnkaro_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-white text-sm font-bold transition-colors shadow-lg shadow-emerald-600/20"
+                  >
                     Apply Now
-                  </div>
+                  </a>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

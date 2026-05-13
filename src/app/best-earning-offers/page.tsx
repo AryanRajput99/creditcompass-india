@@ -137,7 +137,9 @@ export default async function BestEarningOffersPage() {
                   {/* Card info */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="font-bold text-[hsl(var(--color-text))]">{offer.card_name}</p>
+                      <Link href={`/cards/${offer.card_slug}`} className="hover:text-[hsl(var(--color-primary))] transition-colors">
+                        <p className="font-bold text-[hsl(var(--color-text))]">{offer.card_name}</p>
+                      </Link>
                       {idx === 0 && (
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-700 text-[9px] font-extrabold uppercase tracking-widest rounded-full">
                           <Zap className="w-2.5 h-2.5" /> Top Pick
@@ -155,25 +157,15 @@ export default async function BestEarningOffersPage() {
 
                   {/* CTA */}
                   <div className="flex-shrink-0">
-                    {card ? (
-                      <Link
-                        href={`/cards/${card.slug}`}
-                        className="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm transition-all hover:scale-[1.03] shadow-md shadow-emerald-600/20"
-                      >
-                        Apply Now
-                        <ExternalLink className="w-4 h-4" />
-                      </Link>
-                    ) : (
-                      <a
-                        href={offer.earnkaro_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm transition-all hover:scale-[1.03] shadow-md shadow-emerald-600/20"
-                      >
-                        Apply Now
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
+                    <a
+                      href={offer.earnkaro_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm transition-all hover:scale-[1.03] shadow-md shadow-emerald-600/20"
+                    >
+                      Apply Now
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
                   </div>
                 </div>
               ))}
