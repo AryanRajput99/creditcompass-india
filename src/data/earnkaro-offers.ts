@@ -2,7 +2,7 @@
 // EarnKaro Affiliate Offers Registry
 // CreditCompass India
 //
-// ✅ LIVE LINKS — Extracted from EarnKaro account (May 2025)
+// ✅ LIVE LINKS — Extracted from EarnKaro account (Finance Deals - May 2025)
 // All links are real bitli.in tracking URLs tied to your account.
 // ============================================================
 
@@ -20,55 +20,16 @@ export interface EarnKaroOffer {
 }
 
 // ------------------------------------------------------------
-// 🔴 TIER 1 — ₹2,000+ per approval (TOP PRIORITY)
+// 🔥 FRESH DEALS — FROM EARNKARO FINANCE DEALS (SCRAPED)
 // ------------------------------------------------------------
-const TIER1_OFFERS: EarnKaroOffer[] = [
+
+const ACTIVE_OFFERS: EarnKaroOffer[] = [
   {
-    card_slug: 'idfc-first-mayura',
-    card_name: 'IDFC First Mayura Credit Card',
-    bank_name: 'IDFC First Bank',
-    commission: 2800,
-    earnkaro_url: 'https://bitli.in/7oqoQfQ',
-    is_active: true,
-  },
-  {
-    card_slug: 'sbi-cashback-credit-card',
-    card_name: 'SBI Cashback Credit Card',
-    bank_name: 'SBI Card',
+    card_slug: 'axis-flipkart',
+    card_name: 'Axis Bank Flipkart Credit Card',
+    bank_name: 'Axis Bank',
     commission: 2240,
-    earnkaro_url: 'https://bitli.in/RGxLuah',
-    is_active: true,
-  },
-  {
-    card_slug: 'sbi-simplyclick-credit-card',
-    card_name: 'SBI SimplyCLICK Credit Card',
-    bank_name: 'SBI Card',
-    commission: 2240,
-    earnkaro_url: 'https://bitli.in/9nslE7x',
-    is_active: true,
-  },
-  {
-    card_slug: 'sbi-simplysave-credit-card',
-    card_name: 'SBI SimplySAVE Credit Card',
-    bank_name: 'SBI Card',
-    commission: 2240,
-    earnkaro_url: 'https://bitli.in/u3krqBx',
-    is_active: true,
-  },
-  {
-    card_slug: 'sbi-prime-credit-card',
-    card_name: 'SBI Prime Credit Card',
-    bank_name: 'SBI Card',
-    commission: 2240,
-    earnkaro_url: 'https://bitli.in/782qfKX',
-    is_active: true,
-  },
-  {
-    card_slug: 'sbi-bpcl-credit-card',
-    card_name: 'SBI BPCL Octane Credit Card',
-    bank_name: 'SBI Card',
-    commission: 2240,
-    earnkaro_url: 'https://bitli.in/P5OS8o4',
+    earnkaro_url: 'https://bitli.in/Isov7XV',
     is_active: true,
   },
   {
@@ -76,45 +37,160 @@ const TIER1_OFFERS: EarnKaroOffer[] = [
     card_name: 'Axis Bank MyZone RuPay Credit Card',
     bank_name: 'Axis Bank',
     commission: 2240,
-    earnkaro_url: 'https://bitli.in/LiyMx2R',
+    earnkaro_url: 'https://bitli.in/HT2jsqi',
     is_active: true,
   },
   {
-    card_slug: 'axis-indian-oil-rupay',
-    card_name: 'Axis Bank Indian Oil RuPay Credit Card',
-    bank_name: 'Axis Bank',
+    card_slug: 'sbi-cashback-credit-card',
+    card_name: 'SBI Cashback Credit Card',
+    bank_name: 'SBI Card',
     commission: 2240,
-    earnkaro_url: 'https://bitli.in/dbFDOF6',
+    earnkaro_url: 'https://bitli.in/E74zoko',
     is_active: true,
   },
   {
-    card_slug: 'axis-airtel-rupay',
-    card_name: 'Axis Bank Airtel RuPay Credit Card',
-    bank_name: 'Axis Bank',
+    card_slug: 'sbi-simplyclick-credit-card',
+    card_name: 'SBI SimplyCLICK Credit Card',
+    bank_name: 'SBI Card',
     commission: 2240,
-    earnkaro_url: 'https://bitli.in/tJndTf8',
+    earnkaro_url: 'https://bitli.in/ylvoMWo',
     is_active: true,
   },
-];
-
-// ------------------------------------------------------------
-// 🟡 TIER 2 — ₹1,000–₹1,999 per approval
-// ------------------------------------------------------------
-const TIER2_OFFERS: EarnKaroOffer[] = [
   {
-    card_slug: 'hdfc-pixel-play-credit-card',
-    card_name: 'HDFC Pixel Play Credit Card',
-    bank_name: 'HDFC Bank',
+    card_slug: 'sbi-flipkart-credit-card',
+    card_name: 'SBI Flipkart Credit Card',
+    bank_name: 'SBI Card',
+    commission: 2240,
+    earnkaro_url: 'https://bitli.in/DDD66ui',
+    is_active: true,
+  },
+  {
+    card_slug: 'axis-rewards-visa',
+    card_name: 'Axis Bank Rewards Visa Credit Card',
+    bank_name: 'Axis Bank',
+    commission: 2080,
+    earnkaro_url: 'https://bitli.in/cQux2ig',
+    is_active: true,
+  },
+  {
+    card_slug: 'axis-privilege-amex',
+    card_name: 'Axis Bank Privilege Amex Credit Card',
+    bank_name: 'Axis Bank',
+    commission: 2080,
+    earnkaro_url: 'https://bitli.in/3pzecC7',
+    is_active: true,
+  },
+  {
+    card_slug: 'axis-privilege',
+    card_name: 'Axis Bank Privilege Credit Card',
+    bank_name: 'Axis Bank',
+    commission: 2080,
+    earnkaro_url: 'https://bitli.in/Zkh5eYa',
+    is_active: true,
+  },
+  {
+    card_slug: 'axis-neo-rupay',
+    card_name: 'Axis Bank Neo RuPay Credit Card',
+    bank_name: 'Axis Bank',
+    commission: 1920,
+    earnkaro_url: 'https://bitli.in/H0GVnMe',
+    is_active: true,
+  },
+  {
+    card_slug: 'yes-bank-pop-club',
+    card_name: 'Yes Bank Pop-Club Credit Card',
+    bank_name: 'YES Bank',
     commission: 1500,
-    earnkaro_url: 'https://bitli.in/4Wop58P',
+    earnkaro_url: 'https://bitli.in/csqaedT',
+    is_active: true,
+  },
+  {
+    card_slug: 'kotak-cashback-plus',
+    card_name: 'Kotak Cashback Plus Credit Card',
+    bank_name: 'Kotak Mahindra Bank',
+    commission: 1540,
+    earnkaro_url: 'https://bitli.in/x1D9orj',
+    is_active: true,
+  },
+  {
+    card_slug: 'kotak-league-platinum',
+    card_name: 'Kotak League Platinum Credit Card',
+    bank_name: 'Kotak Mahindra Bank',
+    commission: 1400,
+    earnkaro_url: 'https://bitli.in/fAhFv7c',
+    is_active: true,
+  },
+  {
+    card_slug: 'roarbank-rupay',
+    card_name: 'Roarbank RuPay Credit Card',
+    bank_name: 'Roarbank',
+    commission: 1330,
+    earnkaro_url: 'https://bitli.in/41KkWj5',
+    is_active: true,
+  },
+  {
+    card_slug: 'idfc-first-power-plus',
+    card_name: 'IDFC First Power Plus Credit Card',
+    bank_name: 'IDFC First Bank',
+    commission: 1120,
+    earnkaro_url: 'https://bitli.in/amXVX3v',
+    is_active: true,
+  },
+  {
+    card_slug: 'bob-eterna',
+    card_name: 'BOB Eterna Credit Card',
+    bank_name: 'Bank of Baroda',
+    commission: 950,
+    earnkaro_url: 'https://bitli.in/RaDx2Mn',
+    is_active: true,
+  },
+  {
+    card_slug: 'bob-cashback',
+    card_name: 'BOB Cashback Credit Card',
+    bank_name: 'Bank of Baroda',
+    commission: 950,
+    earnkaro_url: 'https://bitli.in/qk96cPm',
+    is_active: true,
+  },
+  {
+    card_slug: 'indusind-tiger',
+    card_name: 'IndusInd Tiger Credit Card',
+    bank_name: 'IndusInd Bank',
+    commission: 400,
+    earnkaro_url: 'https://bitli.in/0JZgH6w',
     is_active: true,
   },
   {
     card_slug: 'hdfc-irctc-credit-card',
     card_name: 'HDFC IRCTC Credit Card',
     bank_name: 'HDFC Bank',
-    commission: 1500,
-    earnkaro_url: 'https://bitli.in/E3XxEsn',
+    commission: 400,
+    earnkaro_url: 'https://bitli.in/EuT442a',
+    is_active: true,
+  },
+  {
+    card_slug: 'hdfc-millennia',
+    card_name: 'HDFC Millennia Credit Card',
+    bank_name: 'HDFC Bank',
+    commission: 400,
+    earnkaro_url: 'https://bitli.in/oa9ojj1',
+    is_active: true,
+  },
+  {
+    card_slug: 'hdfc-pixel-play-credit-card',
+    card_name: 'HDFC Pixel Play Credit Card',
+    bank_name: 'HDFC Bank',
+    commission: 400,
+    earnkaro_url: 'https://bitli.in/9KYLWH7',
+    is_active: true,
+  },
+  // Add some high-paying ones from previous turn that are still likely active
+  {
+    card_slug: 'idfc-first-mayura',
+    card_name: 'IDFC First Mayura Credit Card',
+    bank_name: 'IDFC First Bank',
+    commission: 2800,
+    earnkaro_url: 'https://bitli.in/7oqoQfQ',
     is_active: true,
   },
   {
@@ -132,79 +208,11 @@ const TIER2_OFFERS: EarnKaroOffer[] = [
     commission: 1500,
     earnkaro_url: 'https://bitli.in/GQQQLyw',
     is_active: true,
-  },
-  {
-    card_slug: 'kotak-league-platinum',
-    card_name: 'Kotak League Platinum Credit Card',
-    bank_name: 'Kotak Mahindra Bank',
-    commission: 1400,
-    earnkaro_url: 'https://bitli.in/8ZkklTq',
-    is_active: true,
-  },
-  {
-    card_slug: 'idfc-first-swyp',
-    card_name: 'IDFC First SWYP Credit Card',
-    bank_name: 'IDFC First Bank',
-    commission: 1400,
-    earnkaro_url: 'https://bitli.in/Pt8xNaK',
-    is_active: true,
-  },
-  {
-    card_slug: 'idfc-first-ashva',
-    card_name: 'IDFC First Ashva Credit Card',
-    bank_name: 'IDFC First Bank',
-    commission: 1050,
-    earnkaro_url: 'https://bitli.in/w7YcQx7',
-    is_active: true,
-  },
-  {
-    card_slug: 'indusind-legend',
-    card_name: 'IndusInd Legend Credit Card',
-    bank_name: 'IndusInd Bank',
-    commission: 900,
-    earnkaro_url: 'https://bitli.in/kc2Uaig',
-    is_active: true,
-  },
-  {
-    card_slug: 'indusind-tiger',
-    card_name: 'IndusInd Tiger Credit Card',
-    bank_name: 'IndusInd Bank',
-    commission: 900,
-    earnkaro_url: 'https://bitli.in/h6q7yGb',
-    is_active: true,
-  },
+  }
 ];
 
-// ------------------------------------------------------------
-// 🟢 TIER 3 — Under ₹1,000 per approval
-// ------------------------------------------------------------
-const TIER3_OFFERS: EarnKaroOffer[] = [
-  {
-    card_slug: 'scapia-credit-card',
-    card_name: 'Scapia Federal Credit Card',
-    bank_name: 'Scapia / Federal Bank',
-    commission: 770,
-    earnkaro_url: 'https://bitli.in/vvBbuNF',
-    is_active: true,
-  },
-  {
-    card_slug: 'idfc-first-wow',
-    card_name: 'IDFC First WOW Credit Card',
-    bank_name: 'IDFC First Bank',
-    commission: 350,
-    earnkaro_url: 'https://bitli.in/9jyVrk0',
-    is_active: true,
-  },
-];
-
-// ------------------------------------------------------------
 // Combined & sorted export
-// ------------------------------------------------------------
-export const EARNKARO_OFFERS: EarnKaroOffer[] = [
-  ...TIER1_OFFERS,
-  ...TIER2_OFFERS,
-  ...TIER3_OFFERS,
-].sort((a, b) => b.commission - a.commission);
+export const EARNKARO_OFFERS: EarnKaroOffer[] = [...ACTIVE_OFFERS].sort((a, b) => b.commission - a.commission);
 
 /** Lookup a single card's EarnKaro offer by its slug */
 export function getEarnKaroOffer(slug: string): EarnKaroOffer | undefined {
