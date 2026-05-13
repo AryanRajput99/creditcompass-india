@@ -5,6 +5,7 @@ import CardsListingClient from '@/components/cards/CardsListingClient';
 import { createClient } from '@/lib/supabase/server';
 import { CreditCard, Category } from '@/types';
 import type { Metadata } from 'next';
+import { getMonetizedSlugs } from '@/lib/monetization';
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -30,7 +31,8 @@ export default async function CardsPage({ searchParams }: PageProps) {
   let query = supabase
     .from('credit_cards')
     .select('*')
-    .eq('is_active', true);
+    .eq('is_active', true)
+    .in('slug', getMonetizedSlugs());
 
   // Filter by category
   if (params.category && params.category !== 'all') {

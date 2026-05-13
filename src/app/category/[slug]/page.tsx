@@ -8,6 +8,7 @@ import CardCard from '@/components/cards/CardCard';
 import { ArrowRight } from 'lucide-react';
 import { CreditCard } from '@/types';
 import { CATEGORY_LABELS, CATEGORY_ICONS, CATEGORY_COLORS, cn } from '@/lib/utils';
+import { getMonetizedSlugs } from '@/lib/monetization';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -108,6 +109,7 @@ export default async function CategoryPage({ params }: PageProps) {
     .from('credit_cards')
     .select('*')
     .eq('is_active', true)
+    .in('slug', getMonetizedSlugs())
     .contains('categories', [slug])
     .order('is_featured', { ascending: false })
     .order('sort_order', { ascending: true });

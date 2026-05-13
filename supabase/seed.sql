@@ -1,12 +1,9 @@
 -- ============================================================
--- CreditCompass India — Production Seed Data (v2)
--- ✅ CORRECTED: joining_fee ≠ annual_fee where appropriate
--- ✅ REAL affiliate URLs from EarnKaro/bitli.in
--- ✅ 10 cards with accurate, real-world data
--- Run AFTER schema.sql in Supabase SQL Editor
+-- CreditCompass India — Production Seed Data (EarnKaro Only)
+-- ✅ ONLY cards with active EarnKaro affiliate links
+-- ✅ 20 High-Commission Indian Credit Cards
 -- ============================================================
 
--- Clear old data first
 TRUNCATE TABLE credit_cards RESTART IDENTITY CASCADE;
 
 INSERT INTO credit_cards (
@@ -19,224 +16,202 @@ INSERT INTO credit_cards (
   seo_title, seo_description
 ) VALUES
 
--- ─── 1. SBI Cashback Credit Card ────────────────────────────
--- joining_fee=999, annual_fee=999 (correctly same — both waived on ₹2L spend)
+-- 1. IDFC First Mayura (₹2,800)
 (
-  'sbi-cashback-credit-card',
-  'SBI Cashback Credit Card',
-  'SBI Card',
-  NULL,
-  999, 999, 'Waived on annual spend of ₹2 Lakh', false,
-  20000, 650,
-  5.0,
-  '5% cashback on all online spends (all merchants) + 1% on offline spends',
-  NULL, '1% fuel surcharge waiver',
-  'Extra ₹2,000 cashback in first 2 months on ₹2,000+ spend',
-  ARRAY['cashback','shopping'],
-  ARRAY['5% unlimited cashback on all online spends','No merchant restrictions','Auto-credited monthly — no redemption hassle','Works on every website — Amazon, Flipkart, Zomato, IRCTC etc.','Fee waived easily at ₹2L annual spend'],
-  ARRAY['No lounge access','1% offline rate is average','Monthly cashback cap of ₹5,000'],
-  'Online shoppers who spend ₹10,000+ per month digitally',
-  'https://bitli.in/RGxLuah', true, 1,
-  'SBI Cashback Credit Card — 5% Cashback on All Online Spends | Apply 2025',
-  'Apply for SBI Cashback Credit Card. Get 5% unlimited cashback on all online transactions with no merchant restrictions. Auto-credited monthly. ₹999 annual fee waived on ₹2L spend.'
+  'idfc-first-mayura', 'IDFC First Mayura Credit Card', 'IDFC First Bank', NULL,
+  2999, 2999, 'Waived on ₹5L spend', false, 100000, 750,
+  NULL, '10X points on International, 5X on Travel/Dining', '4 domestic + 2 international per quarter', '1% waiver', '5000 bonus points',
+  ARRAY['premium', 'travel', 'rewards'], ARRAY['Best lounge access', 'High international rewards', 'Golf privileges'], ARRAY['High fee', 'High income requirement'],
+  'Premium travelers', 'https://bitli.in/7oqoQfQ', true, 1,
+  'IDFC First Mayura Credit Card Review | Apply & Earn ₹2,800', 'Apply for IDFC First Mayura. Premium benefits and high rewards.'
 ),
 
--- ─── 2. Axis Bank Airtel RuPay Credit Card ──────────────────
--- Lifetime free — joining_fee=0, annual_fee=0
+-- 2. SBI Cashback (₹2,240)
 (
-  'axis-airtel-rupay',
-  'Axis Bank Airtel RuPay Credit Card',
-  'Axis Bank',
-  NULL,
-  0, 0, NULL, true,
-  15000, 650,
-  1.0,
-  '25% cashback on Airtel recharges & bills | 10% on Swiggy, Zomato, BigBasket | 1% unlimited on all UPI spends',
-  NULL, NULL,
-  '500 cashback on first Airtel recharge within 30 days',
-  ARRAY['cashback','lifetime-free','fuel'],
-  ARRAY['Lifetime free — zero annual fee ever','25% cashback on Airtel recharges','1% cashback on all UPI payments','Works on Google Pay, PhonePe via RuPay UPI','10% cashback on Swiggy & Zomato'],
-  ARRAY['Best value only for Airtel users','No lounge access','No travel rewards'],
-  'Airtel subscribers and daily UPI payment users',
-  'https://bitli.in/tJndTf8', true, 2,
-  'Axis Bank Airtel RuPay Credit Card — Lifetime Free, 25% Cashback | Apply 2025',
-  'Apply for Axis Airtel RuPay Credit Card. Lifetime free card with 25% cashback on Airtel recharges and 1% on all UPI spends. Works on Google Pay & PhonePe.'
+  'sbi-cashback-credit-card', 'SBI Cashback Credit Card', 'SBI Card', NULL,
+  999, 999, 'Waived on ₹2L spend', false, 20000, 650,
+  5.0, '5% unlimited cashback online', NULL, '1% waiver', NULL,
+  ARRAY['cashback', 'shopping'], ARRAY['5% flat online cashback', 'No merchant restrictions', 'Auto-credit'], ARRAY['No lounge', '1% offline rate'],
+  'Online shoppers', 'https://bitli.in/RGxLuah', true, 2,
+  'SBI Cashback Credit Card Review | Apply & Earn ₹2,240', '5% unlimited cashback on all online spends.'
 ),
 
--- ─── 3. AU LIT Credit Card ──────────────────────────────────
--- Lifetime free
+-- 3. SBI SimplyCLICK (₹2,240)
 (
-  'au-lit-credit-card',
-  'AU LIT Credit Card',
-  'AU Small Finance Bank',
-  NULL,
-  0, 0, NULL, true,
-  15000, 650,
-  2.0,
-  'Choose your own benefits quarterly: up to 2% cashback on your top category',
-  NULL, NULL,
-  'Choose 1 free benefit from travel, cashback, or OTT on joining',
-  ARRAY['cashback','lifetime-free','shopping'],
-  ARRAY['Lifetime free card — zero fee ever','Unique feature: choose your own benefits quarterly','Up to 2% cashback on chosen category','OTT subscription worth ₹300/month as option','Works on UPI via RuPay'],
-  ARRAY['Benefits must be actively changed every quarter','Lower base rate on non-chosen categories','Smaller bank — acceptance rare at premium venues'],
-  'Users who want maximum flexibility in rewards',
-  'https://bitli.in/V6O5cuy', true, 3,
-  'AU LIT Credit Card — Customize Your Rewards | Lifetime Free | Apply 2025',
-  'Apply for AU LIT Credit Card. Choose your own benefits every quarter. Lifetime free with up to 2% cashback. Unique flexible rewards card in India.'
+  'sbi-simplyclick-credit-card', 'SBI SimplyCLICK Credit Card', 'SBI Card', NULL,
+  499, 499, 'Waived on ₹1L spend', false, 20000, 650,
+  1.25, '10X rewards on Amazon, Apollo, Cleartrip', NULL, '1% waiver', '₹500 Amazon voucher',
+  ARRAY['shopping', 'rewards'], ARRAY['Great for Amazon shoppers', 'Low fee', 'Easy waiver'], ARRAY['No lounge', 'Basic offline rewards'],
+  'Beginners & shoppers', 'https://bitli.in/9nslE7x', true, 3,
+  'SBI SimplyCLICK Credit Card Review | Apply & Earn ₹2,240', '10X rewards on partner online brands.'
 ),
 
--- ─── 4. IDFC First SWYP Credit Card ─────────────────────────
--- Lifetime free, students eligible
+-- 4. Axis Airtel RuPay (₹2,240)
 (
-  'idfc-first-swyp',
-  'IDFC First SWYP Credit Card',
-  'IDFC First Bank',
-  NULL,
-  0, 0, NULL, true,
-  0, 600,
-  NULL,
-  '3X reward points on online spends | 1X on all offline spends',
-  NULL, NULL,
-  'Welcome voucher worth ₹500 on first spend',
-  ARRAY['cashback','lifetime-free','student'],
-  ARRAY['Lifetime free — no annual fee','Students eligible (zero income, against FD)','3X rewards on all online shopping','Instant digital card on app','UPI enabled via RuPay'],
-  ARRAY['No lounge access','Rewards can only be redeemed on IDFC First app','Points expire after 3 years'],
-  'Students and first-time credit card users',
-  'https://bitli.in/Pt8xNaK', true, 4,
-  'IDFC First SWYP Credit Card — Lifetime Free for Students | Apply 2025',
-  'Apply for IDFC First SWYP Credit Card. Lifetime free card for students and beginners. 3X rewards on online shopping. Zero income required. Apply online instantly.'
+  'axis-airtel-rupay', 'Axis Bank Airtel RuPay Credit Card', 'Axis Bank', NULL,
+  0, 0, NULL, true, 15000, 650,
+  1.0, '25% on Airtel bills, 10% on Swiggy/Zomato', NULL, NULL, '₹500 cashback',
+  ARRAY['cashback', 'lifetime-free', 'rewards'], ARRAY['Lifetime Free', '25% mobile bill cashback', 'UPI enabled'], ARRAY['Airtel specific', 'No lounge'],
+  'Airtel users & UPI', 'https://bitli.in/tJndTf8', true, 4,
+  'Axis Airtel RuPay Credit Card Review | Apply & Earn ₹2,240', 'Lifetime free card with 25% bill cashback.'
 ),
 
--- ─── 5. IDFC First WOW Credit Card ──────────────────────────
--- Secured card — no credit score needed
+-- 5. Axis Indian Oil RuPay (₹2,240)
 (
-  'idfc-first-wow',
-  'IDFC First WOW Credit Card',
-  'IDFC First Bank',
-  NULL,
-  0, 0, NULL, true,
-  0, 0,
-  NULL,
-  '1X reward points on all spends',
-  NULL, NULL,
-  NULL,
-  ARRAY['lifetime-free','student'],
-  ARRAY['No credit score required — secured against FD','Lifetime free card','Best card to build CIBIL score from zero','Works on UPI via RuPay','Instant card issuance on IDFC First app'],
-  ARRAY['Credit limit = FD amount (capital locked)','No cashback or high rewards','Basic card with minimal benefits'],
-  'People with no credit history who want to build CIBIL score',
-  'https://bitli.in/9jyVrk0', false, 5,
-  'IDFC First WOW Credit Card — No CIBIL Required, Lifetime Free | Apply 2025',
-  'Apply for IDFC First WOW Credit Card. No CIBIL score required. Secured against FD. Lifetime free. Best card to build credit history from zero. Apply online.'
+  'axis-indian-oil-rupay', 'Axis Bank Indian Oil RuPay Credit Card', 'Axis Bank', NULL,
+  0, 0, NULL, true, 15000, 650,
+  NULL, '4% fuel rewards, 1% UPI', NULL, '1% waiver', '250 fuel points',
+  ARRAY['fuel', 'lifetime-free'], ARRAY['4% fuel rewards', 'Lifetime Free', 'UPI enabled'], ARRAY['Only Indian Oil'],
+  'Commuters', 'https://bitli.in/dbFDOF6', true, 5,
+  'Axis Indian Oil RuPay Review | Apply & Earn ₹2,240', 'Best fuel card with RuPay UPI.'
 ),
 
--- ─── 6. Scapia Federal Credit Card ──────────────────────────
--- Lifetime free travel card
+-- 6. HDFC Pixel Play (₹1,500)
 (
-  'scapia-credit-card',
-  'Scapia Federal Credit Card',
-  'Scapia (Federal Bank)',
-  NULL,
-  0, 0, NULL, true,
-  25000, 700,
-  NULL,
-  '10% Scapia coins on travel via Scapia app | 2% on other spends',
-  'Unlimited complimentary domestic airport lounge access',
-  NULL,
-  '2000 Scapia coins on first spend of ₹5,000',
-  ARRAY['travel','lifetime-free'],
-  ARRAY['Lifetime free travel card','Unlimited domestic lounge access','10% on travel bookings via Scapia app','No forex markup on international transactions','Virtual card instant on approval'],
-  ARRAY['Best value only via Scapia app bookings','Scapia coins = lower liquidity than direct cashback','No international lounge access'],
-  'Budget travelers who want lounge access without premium fees',
-  'https://bitli.in/vvBbuNF', true, 6,
-  'Scapia Federal Credit Card — Unlimited Lounge Access, Lifetime Free | Apply 2025',
-  'Apply for Scapia Federal Credit Card. Unlimited domestic airport lounge access, lifetime free, no forex markup. Best free travel card in India 2025.'
+  'hdfc-pixel-play-credit-card', 'HDFC Pixel Play Credit Card', 'HDFC Bank', NULL,
+  0, 0, NULL, true, 25000, 700,
+  5.0, '5% on 2 merchants of your choice', NULL, NULL, NULL,
+  ARRAY['shopping', 'cashback', 'lifetime-free'], ARRAY['Customizable 5% merchants', 'Digital first', 'Lifetime Free'], ARRAY['App only management'],
+  'Gen-Z & App users', 'https://bitli.in/4Wop58P', false, 6,
+  'HDFC Pixel Play Review | Apply & Earn ₹1,500', 'Digital card with customizable 5% cashback.'
 ),
 
--- ─── 7. Axis Bank Indian Oil RuPay Credit Card ──────────────
--- Lifetime free, fuel focus
+-- 7. AU LIT (₹1,540)
 (
-  'axis-indian-oil-rupay',
-  'Axis Bank Indian Oil RuPay Credit Card',
-  'Axis Bank',
-  NULL,
-  0, 0, NULL, true,
-  15000, 650,
-  NULL,
-  '4% fuel rewards at Indian Oil stations | 1% unlimited on all UPI spends | 1% on other spends',
-  NULL, '1% fuel surcharge waiver at Indian Oil pumps',
-  '250 fuel points on first fuel transaction',
-  ARRAY['fuel','lifetime-free'],
-  ARRAY['Lifetime free — zero annual fee','4% rewards on Indian Oil fuel','1% cashback on all UPI payments','RuPay — works on Google Pay, PhonePe','Surcharge waiver at Indian Oil pumps'],
-  ARRAY['Best only at Indian Oil stations','No lounge access','Fuel points have limited redemption options'],
-  'Daily commuters and vehicle owners who refuel at Indian Oil',
-  'https://bitli.in/dbFDOF6', false, 7,
-  'Axis Indian Oil RuPay Credit Card — 4% Fuel Cashback, Lifetime Free | Apply 2025',
-  'Apply for Axis Indian Oil RuPay Credit Card. Get 4% rewards on Indian Oil fuel and 1% on all UPI spends. Lifetime free. Works on Google Pay & PhonePe.'
+  'au-lit-credit-card', 'AU LIT Credit Card', 'AU Bank', NULL,
+  0, 0, NULL, true, 15000, 650,
+  2.0, 'Choose your rewards quarterly', NULL, NULL, 'Choice of benefit',
+  ARRAY['cashback', 'lifetime-free', 'shopping'], ARRAY['Lifetime Free', 'Flexible rewards', 'Customizable'], ARRAY['Must track benefits'],
+  'Flexible users', 'https://bitli.in/V6O5cuy', true, 7,
+  'AU LIT Credit Card Review | Apply & Earn ₹1,540', 'India\'s first customizable lifetime free card.'
 ),
 
--- ─── 8. Kotak League Platinum Credit Card ───────────────────
--- Joining fee ≠ Annual fee (joining is free, annual ₹499)
+-- 8. Kotak League Platinum (₹1,400)
 (
-  'kotak-league-platinum',
-  'Kotak League Platinum Credit Card',
-  'Kotak Mahindra Bank',
-  NULL,
-  0, 499, 'Waived on annual spend of ₹75,000', false,
-  25000, 700,
-  NULL,
-  '8 Reward Points per ₹150 on PVR, Inox, dining | 4 Points on other spends',
-  NULL, NULL,
-  '2 free PVR movie tickets on joining',
-  ARRAY['rewards','shopping'],
-  ARRAY['Zero joining fee','8X rewards on PVR & dining','2 free movie tickets on joining','Low annual fee waived easily','Good lifestyle rewards'],
-  ARRAY['₹499 annual fee if spend < ₹75,000','No lounge access','Reward point redemption only via Kotak portal'],
-  'Movie buffs and dining enthusiasts',
-  'https://bitli.in/8ZkklTq', false, 8,
-  'Kotak League Platinum Credit Card — Free Joining, Movie Benefits | Apply 2025',
-  'Apply for Kotak League Platinum Credit Card. Zero joining fee, 8X rewards on PVR & dining, 2 free movie tickets. Annual fee waived on ₹75,000 spend.'
+  'kotak-league-platinum', 'Kotak League Platinum Credit Card', 'Kotak Bank', NULL,
+  0, 499, 'Waived on ₹75k spend', false, 25000, 700,
+  NULL, '8X rewards on movies & dining', NULL, '1% waiver', '2 PVR tickets',
+  ARRAY['rewards', 'shopping'], ARRAY['Free joining', 'Movie tickets bonus', '8X rewards'], ARRAY['Small waiver cap'],
+  'Movie lovers', 'https://bitli.in/8ZkklTq', false, 8,
+  'Kotak League Platinum Review | Apply & Earn ₹1,400', '8X rewards on PVR and dining.'
 ),
 
--- ─── 9. IDFC First Mayura Credit Card ───────────────────────
--- Premium card, highest EarnKaro commission
+-- 9. IDFC First SWYP (₹1,400)
 (
-  'idfc-first-mayura',
-  'IDFC First Mayura Credit Card',
-  'IDFC First Bank',
-  NULL,
-  2999, 2999, 'Waived on annual spend of ₹5 Lakh', false,
-  100000, 750,
-  NULL,
-  '10X reward points on international spends | 5X on travel & dining | 2X on other spends',
-  '4 domestic + 2 international lounge visits per quarter',
-  '1% surcharge waiver',
-  '5000 bonus points on first spend of ₹5,000',
-  ARRAY['travel','premium','rewards'],
-  ARRAY['Best lounge access in mid-premium segment','10X rewards on international spends','Complimentary golf sessions','Premium concierge service','Travel insurance coverage'],
-  ARRAY['₹2,999 fee not easy to waive','High income requirement','Complex reward tiers'],
-  'Frequent travelers and premium lifestyle seekers',
-  'https://bitli.in/7oqoQfQ', true, 9,
-  'IDFC First Mayura Credit Card — Premium Travel Benefits | Apply 2025',
-  'Apply for IDFC First Mayura Credit Card. 10X international rewards, 4+2 lounge visits per quarter, concierge service. Best mid-premium travel card in India.'
+  'idfc-first-swyp', 'IDFC First SWYP Credit Card', 'IDFC First Bank', NULL,
+  0, 0, NULL, true, 0, 600,
+  NULL, '3X rewards online', NULL, NULL, '₹500 voucher',
+  ARRAY['student', 'lifetime-free', 'shopping'], ARRAY['Student friendly', 'Lifetime Free', '3X online rewards'], ARRAY['Basic benefits'],
+  'Students & Beginners', 'https://bitli.in/Pt8xNaK', true, 9,
+  'IDFC First SWYP Review | Apply & Earn ₹1,400', 'Best lifetime free card for students.'
 ),
 
--- ─── 10. IndusInd Tiger Credit Card ─────────────────────────
--- Lifetime free, fuel
+-- 10. Scapia Federal (₹770)
 (
-  'indusind-tiger',
-  'IndusInd Tiger Credit Card',
-  'IndusInd Bank',
-  NULL,
-  0, 0, NULL, true,
-  20000, 680,
-  1.0,
-  '1.5% cashback at fuel stations (all brands) | 1% on all other spends',
-  NULL, '1% fuel surcharge waiver at all fuel stations in India',
-  NULL,
-  ARRAY['fuel','cashback','lifetime-free'],
-  ARRAY['Lifetime free — zero annual fee','1.5% cashback at ALL fuel brands (not just one)','1% surcharge waiver at every pump in India','No minimum spend for cashback','Simple flat cashback — no complex points'],
-  ARRAY['No lounge access','No welcome bonus','Average rewards on non-fuel spend'],
-  'Daily commuters with high fuel spend across any brand',
-  'https://bitli.in/h6q7yGb', false, 10,
-  'IndusInd Tiger Credit Card — Best Fuel Cashback, Lifetime Free | Apply 2025',
-  'Apply for IndusInd Tiger Credit Card. Lifetime free with 1.5% cashback at all fuel stations in India. No minimum spend. 1% surcharge waiver. Apply online.'
+  'scapia-credit-card', 'Scapia Federal Credit Card', 'Scapia', NULL,
+  0, 0, NULL, true, 25000, 700,
+  NULL, '10% on travel via Scapia app', 'Unlimited domestic lounge', '0% Forex', NULL,
+  ARRAY['travel', 'lifetime-free'], ARRAY['Unlimited lounge', 'Zero Forex', 'Lifetime Free'], ARRAY['Federal bank account needed sometimes'],
+  'Travelers', 'https://bitli.in/vvBbuNF', true, 10,
+  'Scapia Federal Review | Apply & Earn ₹770', 'Unlimited lounge access and zero forex.'
+),
+
+-- 11. IDFC First WOW (₹350)
+(
+  'idfc-first-wow', 'IDFC First WOW Credit Card', 'IDFC First Bank', NULL,
+  0, 0, NULL, true, 0, 0,
+  NULL, '1X rewards on all spends', NULL, NULL, NULL,
+  ARRAY['student', 'lifetime-free'], ARRAY['No income proof', 'Against FD', 'Build CIBIL score'], ARRAY['Lacks rewards'],
+  'First timers', 'https://bitli.in/9jyVrk0', false, 11,
+  'IDFC First WOW Review | Apply & Earn ₹350', 'Zero CIBIL required credit card.'
+),
+
+-- 12. SBI SimplySAVE (₹2,240)
+(
+  'sbi-simplysave-credit-card', 'SBI SimplySAVE Credit Card', 'SBI Card', NULL,
+  499, 499, 'Waived on ₹1L spend', false, 20000, 650,
+  NULL, '10 rewards on Dining, Grocery, Movies', NULL, '1% waiver', '2000 bonus points',
+  ARRAY['shopping', 'rewards'], ARRAY['Grocery & Dining rewards', 'Low fee', 'Wide acceptance'], ARRAY['Basic rewards'],
+  'Daily spenders', 'https://bitli.in/u3krqBx', false, 12,
+  'SBI SimplySAVE Review | Apply & Earn ₹2,240', '10X rewards on daily groceries and dining.'
+),
+
+-- 13. SBI Prime (₹2,240)
+(
+  'sbi-prime-credit-card', 'SBI Prime Credit Card', 'SBI Card', NULL,
+  2999, 2999, 'Waived on ₹3L spend', false, 50000, 720,
+  NULL, '20 points on Birthday, 10 on Dining', '8 domestic + 4 international visits', '1% waiver', '₹3000 vouchers',
+  ARRAY['rewards', 'travel', 'premium'], ARRAY['High birthday rewards', 'Lounge access', 'Milestone bonuses'], ARRAY['High annual fee'],
+  'High spenders', 'https://bitli.in/782qfKX', false, 13,
+  'SBI Prime Credit Card Review | Apply & Earn ₹2,240', 'Premium rewards and lounge access.'
+),
+
+-- 14. Axis MyZone RuPay (₹2,240)
+(
+  'axis-myzone-rupay', 'Axis Bank MyZone RuPay Credit Card', 'Axis Bank', NULL,
+  0, 500, 'Waived on ₹1.5L spend', false, 15000, 650,
+  NULL, 'BOGO on Movies, Swiggy off', '1 domestic per quarter', NULL, 'SonyLiv sub',
+  ARRAY['shopping', 'rewards'], ARRAY['Movie BOGO', 'Swiggy discounts', 'RuPay UPI'], ARRAY['Annual fee'],
+  'Movie buffs', 'https://bitli.in/LiyMx2R', false, 14,
+  'Axis MyZone RuPay Review | Apply & Earn ₹2,240', 'Movie and Swiggy benefits with RuPay UPI.'
+),
+
+-- 15. HDFC IRCTC (₹1,500)
+(
+  'hdfc-irctc-credit-card', 'HDFC IRCTC Credit Card', 'HDFC Bank', NULL,
+  500, 500, 'Waived on ₹1.5L spend', false, 25000, 700,
+  NULL, '5 rewards on IRCTC, 1% on others', '8 executive lounge visits', 'Transaction fee waiver', NULL,
+  ARRAY['travel', 'rewards'], ARRAY['IRCTC cashback', 'Train lounge access', 'Fuel waiver'], ARRAY['Specific to trains'],
+  'Frequent train travelers', 'https://bitli.in/E3XxEsn', false, 15,
+  'HDFC IRCTC Credit Card Review | Apply & Earn ₹1,500', 'Best rewards for train bookings.'
+),
+
+-- 16. Kiwi UPI (₹1,500)
+(
+  'kiwi-upi-credit-card', 'Kiwi UPI Credit Card', 'Kiwi', NULL,
+  0, 0, NULL, true, 20000, 680,
+  1.0, '2% rewards on scan & pay', NULL, NULL, '₹250 cashback',
+  ARRAY['cashback', 'lifetime-free'], ARRAY['Best UPI cashback', 'Lifetime Free', 'Instant virtual card'], ARRAY['No physical card'],
+  'UPI power users', 'https://bitli.in/GQQQLyw', false, 16,
+  'Kiwi UPI Credit Card Review | Apply & Earn ₹1,500', 'Highest cashback on UPI scans.'
+),
+
+-- 17. IDFC First Ashva (₹1,050)
+(
+  'idfc-first-ashva', 'IDFC First Ashva Credit Card', 'IDFC First Bank', NULL,
+  0, 0, NULL, true, 50000, 720,
+  NULL, '10X points online, 6X offline', 'Lounge access', '1% waiver', NULL,
+  ARRAY['rewards', 'lifestyle', 'lifetime-free'], ARRAY['Lifetime Free', 'High online rewards', 'Premium look'], ARRAY['Higher income requirement'],
+  'Professionals', 'https://bitli.in/w7YcQx7', false, 17,
+  'IDFC First Ashva Review | Apply & Earn ₹1,050', 'Premium rewards, lifetime free.'
+),
+
+-- 18. IndusInd Legend (₹900)
+(
+  'indusind-legend', 'IndusInd Legend Credit Card', 'IndusInd Bank', NULL,
+  0, 0, NULL, true, 50000, 720,
+  NULL, '1 reward per ₹100 weekdays, 2 on weekends', 'Domestic lounge access', '1% fuel waiver', NULL,
+  ARRAY['lifestyle', 'lifetime-free'], ARRAY['Lifetime Free', 'Weekend reward boost', 'Priority Pass'], ARRAY['Basic rewards rate'],
+  'Weekend spenders', 'https://bitli.in/kc2Uaig', false, 18,
+  'IndusInd Legend Review | Apply & Earn ₹900', 'Lifetime free premium lifestyle card.'
+),
+
+-- 19. IndusInd Tiger (₹900)
+(
+  'indusind-tiger', 'IndusInd Tiger Credit Card', 'IndusInd Bank', NULL,
+  0, 0, NULL, true, 20000, 680,
+  1.0, '1.5% on fuel, 1% others', NULL, '1% waiver', NULL,
+  ARRAY['fuel', 'cashback', 'lifetime-free'], ARRAY['Best fuel rewards', 'Lifetime Free', 'Wide surcharge waiver'], ARRAY['Basic lifestyle benefits'],
+  'Commuters', 'https://bitli.in/h6q7yGb', false, 19,
+  'IndusInd Tiger Review | Apply & Earn ₹900', 'Unlimited fuel surcharge waiver and cashback.'
+),
+
+-- 20. SBI BPCL Octane (₹2,240)
+(
+  'sbi-bpcl-credit-card', 'SBI BPCL Octane Credit Card', 'SBI Card', NULL,
+  1499, 1499, 'Waived on ₹2L spend', false, 30000, 700,
+  7.25, '25 points per ₹100 on fuel', '4 domestic lounges', '1% waiver', '6000 points',
+  ARRAY['fuel', 'travel'], ARRAY['Highest fuel rewards', 'Lounge access', 'Milestone rewards'], ARRAY['High annual fee'],
+  'Petrol spenders', 'https://bitli.in/P5OS8o4', false, 20,
+  'SBI BPCL Octane Review | Apply & Earn ₹2,240', 'Best premium fuel credit card in India.'
 );

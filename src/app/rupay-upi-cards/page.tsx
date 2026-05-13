@@ -7,6 +7,7 @@ import { CreditCard } from '@/types';
 import CardCard from '@/components/cards/CardCard';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { getMonetizedSlugs } from '@/lib/monetization';
 
 export const metadata: Metadata = {
   title: 'Best RuPay Credit Cards for UPI in India (2025) — Compare & Save',
@@ -23,6 +24,7 @@ export default async function RupayUPIPage() {
     .select('*')
     .or('name.ilike.%rupay%,best_for.ilike.%upi%')
     .eq('is_active', true)
+    .in('slug', getMonetizedSlugs())
     .order('is_featured', { ascending: false });
 
   const topUPICards = (rupayCards as CreditCard[])?.slice(0, 5) || [];

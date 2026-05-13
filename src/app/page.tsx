@@ -7,6 +7,7 @@ import CardCard from '@/components/cards/CardCard';
 import { ArrowRight, Star, Zap, Percent, BadgePercent, BadgeIndianRupee, TrendingUp } from 'lucide-react';
 import { CreditCard, Category } from '@/types';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
+import { getMonetizedSlugs } from '@/lib/monetization';
 
 export const metadata: Metadata = {
   title: 'CreditCompass India — Find the Best Credit Card',
@@ -20,6 +21,7 @@ export default async function Home() {
     .from('credit_cards')
     .select('*')
     .eq('is_featured', true)
+    .in('slug', getMonetizedSlugs())
     .order('sort_order', { ascending: true })
     .limit(3);
 
