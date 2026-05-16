@@ -11,23 +11,22 @@ interface UPICalculatorProps {
 export default function UPICalculator({ topUPICards }: UPICalculatorProps) {
   const [spend, setSpend] = useState<number>(10000);
   const [selectedCardId, setSelectedCardId] = useState<string>(topUPICards[0]?.id || '');
-  const [savings, setSavings] = useState<{ monthly: number; yearly: number }>({ monthly: 0, yearly: 0 });
-
   const selectedCard = topUPICards.find((c) => c.id === selectedCardId);
 
-  useEffect(() => {
-    if (!selectedCard) return;
+  // Estimate reward rate for UPI (usually 1-2% for top cards)
+  let rewardRate = 1;
+  if (selectedCard) {
+    rewardRate = parseFloat(String(selectedCard.cashback_rate || 'NaN'));
+    if (isNaN(rewardRate)) {
+      const match = String(selectedCard.reward_rate || '').match(/(\d+(\.\d+)?)/);
+      rewardRate = match ? parseFloat(match[1]) : 1;
+    }
+    if (isNaN(rewardRate) || rewardRate <= 0) rewardRate = 1;
+    if (rewardRate > 5) rewardRate = 1.5; // Cap unrealistic text parses
+  }
 
-    // Estimate reward rate for UPI (usually 1-2% for top cards)
-    // We'll use a property from the card or a default
-    const rewardRate = parseFloat(selectedCard.reward_rate || '1');
-    const monthlySavings = (spend * rewardRate) / 100;
-    
-    setSavings({
-      monthly: monthlySavings,
-      yearly: monthlySavings * 12,
-    });
-  }, [spend, selectedCardId, selectedCard]);
+  const monthlySavings = (spend * rewardRate) / 100;
+  const yearlySavings = monthlySavings * 12;
 
   return (
     <div className="bg-[hsl(var(--color-bg))] rounded-3xl border border-[hsl(var(--color-border))] p-8 shadow-2xl overflow-hidden relative group">
@@ -110,14 +109,14 @@ export default function UPICalculator({ topUPICards }: UPICalculatorProps) {
                 <div>
                   <p className="text-sm font-medium text-[hsl(var(--color-text-secondary))] mb-1">Monthly Rewards</p>
                   <p className="text-3xl font-black text-[hsl(var(--color-text))] tracking-tighter">
-                    ₹{savings.monthly.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                    ₹{monthlySavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                   </p>
                 </div>
                 
                 <div className="pt-6 border-t border-[hsl(var(--color-border))]">
                   <p className="text-sm font-medium text-[hsl(var(--color-text-secondary))] mb-1">Yearly Savings</p>
                   <p className="text-5xl font-black text-[hsl(var(--color-primary))] tracking-tighter">
-                    ₹{savings.yearly.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                    ₹{yearlySavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                   </p>
                 </div>
               </div>
@@ -125,7 +124,7 @@ export default function UPICalculator({ topUPICards }: UPICalculatorProps) {
 
             <div className="mt-8 space-y-4">
               <p className="text-[10px] leading-relaxed text-[hsl(var(--color-text-secondary))] font-medium">
-                *Estimated based on {selectedCard?.reward_rate || '1'}% reward rate on UPI spends. Actual rewards may vary based on merchant category.
+                *Estimated based on {rewardRate}% reward rate on UPI spends. Actual rewards may vary based on merchant category.
               </p>
               
               <Link
