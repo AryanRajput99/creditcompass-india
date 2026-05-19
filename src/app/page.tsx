@@ -8,6 +8,7 @@ import { ArrowRight, Star, Zap, Percent, BadgePercent, BadgeIndianRupee, Trendin
 import { CreditCard, Category } from '@/types';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 import { getMonetizedSlugs } from '@/lib/monetization';
+import QuickMatcher from '@/components/ui/QuickMatcher';
 
 export const metadata: Metadata = {
   title: 'CreditCompass India — Find the Best Credit Card',
@@ -30,30 +31,40 @@ export default async function Home() {
       <Navbar />
       
       {/* 1. HERO SECTION */}
-      <section className="bg-white pt-24 pb-16 md:pt-48 md:pb-32">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-bold tracking-widest uppercase mb-10">
-            The New Standard
-          </span>
-          <h1 className="text-4xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-8 tracking-tighter">
-            Find the perfect <br className="hidden md:block" /> <span className="text-blue-600">Credit Card</span>.
-          </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Stop guessing. Compare fees, cashback, and rewards across 50+ top Indian cards to maximize your benefits today.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-24">
-            <Link href="/cards" className="btn-base btn-apply px-10 py-4 text-base">
-              Browse All Cards <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-            <Link href="/compare" className="btn-base btn-secondary px-10 py-4 text-base border-2">
-              Compare Cards
-            </Link>
+      <section className="bg-white pt-28 pb-16 md:pt-40 md:pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+            {/* Left Info Column */}
+            <div className="lg:col-span-7 text-left">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-bold tracking-widest uppercase mb-8">
+                The New Standard
+              </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tighter">
+                Find the perfect <br /> <span className="text-blue-600">Credit Card</span>.
+              </h1>
+              <p className="text-base sm:text-lg text-slate-600 max-w-xl mb-8 leading-relaxed font-medium">
+                Stop guessing. Compare fees, cashback, and rewards across 50+ top Indian cards to maximize your benefits today.
+              </p>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Link href="/cards" className="btn-base btn-apply px-8 py-3.5 text-sm font-bold text-center">
+                  Browse All Cards <ArrowRight className="w-4 h-4 ml-1.5" />
+                </Link>
+                <Link href="/compare" className="btn-base btn-secondary px-8 py-3.5 text-sm font-bold border-2 text-center">
+                  Compare Cards
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Widget Column */}
+            <div className="lg:col-span-5 w-full">
+              <QuickMatcher />
+            </div>
           </div>
 
           {/* Trust Logos */}
-          <div className="pt-20 border-t border-gray-100">
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-10">Official Partners</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-30 grayscale font-black text-xl">
+          <div className="pt-16 border-t border-gray-100 text-center">
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-8">Official Partners</p>
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-35 grayscale font-black text-lg">
               <span>HDFC BANK</span>
               <span>SBI CARD</span>
               <span>ICICI BANK</span>
