@@ -38,23 +38,26 @@
 /* ============================================================
    BASE STYLES
    ============================================================ */
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: hsl(var(--color-bg));
+    color: hsl(var(--color-text));
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    color: hsl(var(--color-text));
+  }
 }
 
-body {
-  font-family: var(--font-sans);
-  background-color: hsl(var(--color-bg));
-  color: hsl(var(--color-text));
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  letter-spacing: -0.03em;
-  color: hsl(var(--color-text));
-}
 
 /* ============================================================
    SCROLLBAR STYLING
