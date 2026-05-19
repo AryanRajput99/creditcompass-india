@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, CreditCard, ChevronDown, Phone, Smartphone, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import NavbarSearch from './NavbarSearch';
 
 const NAV_LINKS = [
   {
@@ -103,8 +104,9 @@ export default function Navbar() {
           </div>
 
           {/* Right side Actions */}
-          <div className="hidden lg:flex items-center gap-6">
-            <Link href="/admin/login" className="text-[14px] font-bold text-[hsl(var(--color-text-secondary))] hover:text-[hsl(var(--color-primary))] transition-colors">
+          <div className="hidden lg:flex items-center gap-5">
+            <NavbarSearch />
+            <Link href="/admin/login" className="text-[14px] font-bold text-[hsl(var(--color-text-secondary))] hover:text-[hsl(var(--color-primary))] transition-colors ml-2">
               Sign In
             </Link>
             <Link href="/cards" className="btn-base btn-apply px-6 py-2.5 text-xs shadow-md">
@@ -125,7 +127,10 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="lg:hidden bg-white border-t border-[hsl(var(--color-border))] shadow-2xl h-screen overflow-y-auto">
-          <div className="px-6 py-8 space-y-4">
+          <div className="px-6 py-6 space-y-4">
+            <div className="px-4 pb-2">
+              <NavbarSearch className="w-full" />
+            </div>
             {NAV_LINKS.map((link) => (
               <div key={link.label} className="space-y-2">
                 <Link
