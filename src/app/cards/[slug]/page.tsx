@@ -62,6 +62,15 @@ export default async function CardDetailPage({ params }: PageProps) {
   // Use real EarnKaro link if available, otherwise fall back to card's affiliate_url
   const applyUrl = ekOffer?.earnkaro_url ?? typedCard.affiliate_url;
 
+  // Fetch up to 3 related cards (same first category, excluding current card)
+  const firstCategory = typedCard.categories[0] || 'cashback';
+  const { data: relatedCards } = await supabase
+    .from('credit_cards')
+    .select('id, name, bank_name, slug, card_image_url, joining_fee, annual_fee, is_lifetime_free, categories')
+    .contains('categories', [firstCategory])
+    .neq('slug', typedCard.slug)
+    .limit(3);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FinancialProduct',
@@ -71,11 +80,63 @@ export default async function CardDetailPage({ params }: PageProps) {
     offers: { '@type': 'Offer', price: typedCard.annual_fee, priceCurrency: 'INR' },
   };
 
+  const faqs = [
+    {
+      q: `What is the annual fee of ${typedCard.name}?`,
+      a: `${typedCard.name} has an annual fee of ${
+        typedCard.is_lifetime_free
+          ? '₹0 (Lifetime Free)'
+          : typedCard.annual_fee === 0
+          ? '₹0 (Free)'
+          : `₹${typedCard.annual_fee.toLocaleString('en-IN')}`
+      }.${typedCard.annual_fee_waiver ? ` The fee can be waived off on: ${typedCard.annual_fee_waiver}.` : ''}`,
+    },
+    {
+      q: `What is the minimum monthly income required for ${typedCard.name}?`,
+      a: typedCard.min_income_monthly
+        ? `To apply for ${typedCard.name}, a minimum monthly income of ₹${typedCard.min_income_monthly.toLocaleString(
+            'en-IN'
+          )} is recommended.`
+        : `The minimum monthly income is not strictly specified by the bank, but a stable income source is required for approval.`,
+    },
+    ...(typedCard.lounge_access
+      ? [
+          {
+            q: `Does ${typedCard.name} offer airport lounge access?`,
+            a: `Yes! ${typedCard.name} offers lounge access: ${typedCard.lounge_access}.`,
+          },
+        ]
+      : []),
+    {
+      q: `How can I earn cashback or rewards on ${typedCard.name}?`,
+      a: `${typedCard.name} offers rewards based on spending: ${
+        typedCard.cashback_rate ? `Cashback up to ${typedCard.cashback_rate}%. ` : ''
+      }${typedCard.reward_rate ? `Reward rate: ${typedCard.reward_rate}.` : ''}`,
+    },
+  ];
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
 
@@ -339,8 +400,27 @@ export default async function CardDetailPage({ params }: PageProps) {
             </div>
           </div>
 
+          {/* Dynamic FAQ Section */}
+          <div className="surface-card p-6 sm:p-8 mb-8">
+            <h2 className="text-xl font-extrabold text-[hsl(var(--color-text))] mb-6 tracking-tight flex items-center gap-2">
+              ❓ Frequently Asked Questions
+            </h2>
+            <div className="space-y-6 divide-y divide-[hsl(var(--color-border))]">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className={idx > 0 ? "pt-6" : ""}>
+                  <h3 className="font-bold text-[hsl(var(--color-text))] mb-2 text-base leading-snug">
+                    {faq.q}
+                  </h3>
+                  <p className="text-sm text-[hsl(var(--color-text-secondary))] leading-relaxed font-medium">
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Bottom CTA */}
-          <div className="surface-card p-8 text-center bg-gradient-to-br from-blue-600 to-indigo-700 border-none">
+          <div className="surface-card p-8 text-center bg-gradient-to-br from-blue-600 to-indigo-700 border-none mb-8">
             <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <ShieldCheck className="w-6 h-6 text-white" />
             </div>
@@ -359,6 +439,63 @@ export default async function CardDetailPage({ params }: PageProps) {
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[hsl(var(--color-primary))] rounded-xl font-extrabold text-base hover:bg-blue-50 transition-colors shadow-lg"
             />
           </div>
+
+          {/* Related Cards Section */}
+          {relatedCards && relatedCards.length > 0 && (
+            <div className="surface-card p-6 sm:p-8">
+              <h2 className="text-xl font-extrabold text-[hsl(var(--color-text))] mb-6 tracking-tight">
+                Recommended For You
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {(relatedCards as any[]).map((rel) => (
+                  <div key={rel.id} className="group border border-[hsl(var(--color-border))] rounded-2xl p-4 flex flex-col hover:border-[hsl(var(--color-primary))] hover:shadow-md transition-all bg-white">
+                    <div className="h-20 mb-3 flex items-center justify-center p-2 bg-slate-50 rounded-xl relative">
+                      {rel.card_image_url ? (
+                        <Image
+                          src={rel.card_image_url}
+                          alt={rel.name}
+                          width={100}
+                          height={60}
+                          className="object-contain max-h-full"
+                        />
+                      ) : (
+                        <CardIcon className="w-8 h-8 text-[hsl(var(--color-text-tertiary))]" />
+                      )}
+                    </div>
+                    <p className="text-[10px] text-[hsl(var(--color-text-tertiary))] font-extrabold uppercase tracking-widest mb-1 truncate">
+                      {rel.bank_name}
+                    </p>
+                    <Link
+                      href={`/cards/${rel.slug}`}
+                      className="font-bold text-sm text-[hsl(var(--color-text))] hover:text-[hsl(var(--color-primary))] transition-colors line-clamp-2 leading-tight flex-1"
+                    >
+                      {rel.name}
+                    </Link>
+                    <div className="pt-3 mt-3 border-t border-[hsl(var(--color-border))] flex items-center justify-between text-xs">
+                      <div>
+                        <p className="text-[10px] font-bold text-[hsl(var(--color-text-tertiary))] uppercase tracking-widest">Annual Fee</p>
+                        <p className="font-extrabold text-[hsl(var(--color-text))]">
+                          {rel.is_lifetime_free ? (
+                            <span className="text-emerald-600">Free</span>
+                          ) : rel.annual_fee === 0 ? (
+                            <span className="text-emerald-600">Free</span>
+                          ) : (
+                            `₹${rel.annual_fee.toLocaleString('en-IN')}`
+                          )}
+                        </p>
+                      </div>
+                      <Link
+                        href={`/cards/${rel.slug}`}
+                        className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-[hsl(var(--color-primary))] rounded-lg font-bold transition-colors"
+                      >
+                        Details
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </main>
 
