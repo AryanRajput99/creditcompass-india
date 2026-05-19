@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     title: 'CreditCompass India — Compare Best Credit Cards 2025',
     description: 'Compare 100+ credit cards in India and find the perfect card for you.',
   },
+  verification: {
+    google: 'QMlNitCg392KMXtqaIDrf_uz2-tUV9nRpKQuOLxc4Gw',
+  },
   robots: {
     index: true,
     follow: true,
