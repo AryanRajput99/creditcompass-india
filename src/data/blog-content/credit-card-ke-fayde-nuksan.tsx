@@ -26,7 +26,7 @@ export default function CreditCardFaydeNuksan() {
       <p>Debit card mein aap utna hi kharch kar sakte hain jitna aapke bank account mein hai. Lekin credit card mein bank aapko limit deta hai (jaise ₹1,00,000). Yeh dekhkar bohot log bina soche-samjhe kharch kar dete hain aur baad mein bill pay nahi kar paate.</p>
 
       <h3>2. Heavy Interest Rates (36% to 42% per year)</h3>
-      <p>Agar aapne bill due date tak poora pay nahi kiya, toh bache hue balance par **3% se 4.5% monthly** (jo saal ka 42% hota hai) ka tagda interest lagta hai. Isliye hamesha pure bill ka payment karein, sirf "Minimum Due" na pay karein.</p>
+      <p>Agar aapne bill due date tak poora pay nahi kiya, toh bache hue balance par **3% se 4.5% monthly** (jo saal ka 42% hota hai) ka tagda interest lagta hai. Isliye hamesha pure bill ka payment karein, sirf &ldquo;Minimum Due&rdquo; na pay karein.</p>
 
       <h3>3. Hidden Fees and Charges</h3>
       <p>Kuch cards mein yearly fees hoti hain. Iske alawa late payment fees aur cash withdrawal charges (credit card se ATM se paise nikalna) bohot high hote hain.</p>

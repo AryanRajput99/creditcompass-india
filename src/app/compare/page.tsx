@@ -8,10 +8,10 @@ import Footer from '@/components/layout/Footer';
 import {
   CheckCircle,
   XCircle,
-  ExternalLink,
   Plus,
   Trash2,
   ArrowLeft,
+  ArrowRight,
   CreditCard as CardIcon,
   GitCompare,
 } from 'lucide-react';
@@ -33,11 +33,37 @@ export default async function ComparePage({ searchParams }: PageProps) {
   const idsParam = params.ids;
 
   if (!idsParam) {
+    const POPULAR_PAIRINGS = [
+      ['sbi-cashback-credit-card', 'hdfc-millennia'],
+      ['axis-flipkart', 'sbi-cashback-credit-card'],
+      ['sbi-simplyclick-credit-card', 'sbi-cashback-credit-card'],
+      ['au-lit-credit-card', 'axis-myzone-rupay'],
+      ['axis-myzone-rupay', 'axis-neo-rupay'],
+      ['sbi-simplyclick-credit-card', 'hdfc-millennia'],
+      ['idfc-first-mayura', 'sbi-cashback-credit-card'],
+      ['axis-rewards-visa', 'hdfc-millennia'],
+    ];
+
+    const supabase = await createClient();
+    const { data: dbCards } = await supabase
+      .from('credit_cards')
+      .select('id, name, slug, bank_name')
+      .eq('is_active', true);
+
+    const cardsList = (dbCards || []) as CreditCard[];
+
+    const popularComparisons = POPULAR_PAIRINGS.map(([slugA, slugB]) => {
+      const cardA = cardsList.find((c) => c.slug === slugA);
+      const cardB = cardsList.find((c) => c.slug === slugB);
+      if (!cardA || !cardB) return null;
+      return { cardA, cardB };
+    }).filter(Boolean) as { cardA: CreditCard; cardB: CreditCard }[];
+
     return (
       <>
         <Navbar />
         <main className="min-h-screen bg-[hsl(var(--color-bg-secondary))] pt-32 pb-20">
-          <div className="max-w-3xl mx-auto px-4 text-center">
+          <div className="max-w-5xl mx-auto px-4 text-center">
             <div className="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-[hsl(var(--color-border))]">
               <GitCompare className="w-10 h-10 text-[hsl(var(--color-primary))]" />
             </div>
@@ -45,12 +71,40 @@ export default async function ComparePage({ searchParams }: PageProps) {
               Select Cards to Compare
             </h1>
             <p className="text-[hsl(var(--color-text-secondary))] mb-8 max-w-lg mx-auto leading-relaxed">
-              You haven&apos;t selected any cards to compare yet. Browse our collection and select
-              up to 3 cards to see them side-by-side.
+              Browse our collection and select cards to see them side-by-side, or explore popular comparisons below.
             </p>
             <Link href="/cards" className="btn-base btn-apply px-8 py-3.5 text-base">
               Browse Credit Cards
             </Link>
+
+            {popularComparisons.length > 0 && (
+              <div className="mt-16 text-left">
+                <h2 className="text-xl font-extrabold text-[hsl(var(--color-text))] tracking-tight mb-6 text-center sm:text-left">
+                  🔥 Popular Credit Card Comparisons
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {popularComparisons.map(({ cardA, cardB }) => (
+                    <Link
+                      key={`${cardA.slug}-vs-${cardB.slug}`}
+                      href={`/compare/${cardA.slug}-vs-${cardB.slug}`}
+                      className="surface-card p-5 hover:border-[hsl(var(--color-primary))] hover:shadow-md transition-all flex items-center justify-between group"
+                    >
+                      <div className="flex-1 min-w-0 pr-4">
+                        <p className="text-[10px] font-bold text-[hsl(var(--color-text-tertiary))] uppercase tracking-widest truncate">
+                          {cardA.bank_name} vs {cardB.bank_name}
+                        </p>
+                        <h3 className="font-extrabold text-sm text-[hsl(var(--color-text))] group-hover:text-[hsl(var(--color-primary))] transition-colors mt-1 truncate">
+                          {cardA.name} <span className="text-[hsl(var(--color-text-tertiary))] font-normal">vs</span> {cardB.name}
+                        </h3>
+                      </div>
+                      <div className="w-8 h-8 bg-blue-50 group-hover:bg-[hsl(var(--color-primary))] rounded-full flex items-center justify-center flex-shrink-0 transition-colors">
+                        <ArrowRight className="w-4 h-4 text-[hsl(var(--color-primary))] group-hover:text-white transition-colors" />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </main>
         <Footer />

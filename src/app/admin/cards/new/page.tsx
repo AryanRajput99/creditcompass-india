@@ -31,7 +31,7 @@ export default function NewCardPage() {
             <input type="url" name="card_image_url" className="w-full px-4 py-2 bg-zinc-950 border border-zinc-700 rounded-lg text-white focus:ring-emerald-500 focus:border-emerald-500" placeholder="https://..." />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-zinc-300 mb-1">Affiliate URL (The "Apply Now" link) *</label>
+            <label className="block text-sm font-medium text-zinc-300 mb-1">Affiliate URL (The &ldquo;Apply Now&rdquo; link) *</label>
             <input type="url" name="affiliate_url" required className="w-full px-4 py-2 bg-zinc-950 border border-zinc-700 rounded-lg text-white focus:ring-emerald-500 focus:border-emerald-500" placeholder="https://tracking.affiliate.com/..." />
           </div>
         </div>

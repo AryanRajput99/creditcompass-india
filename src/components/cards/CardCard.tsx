@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Star, CheckCircle, ExternalLink, CreditCard as CardIcon,
+  Star, CheckCircle, CreditCard as CardIcon,
   ArrowRight, Plus, GitCompare, BadgeIndianRupee
 } from 'lucide-react';
 import { CreditCard } from '@/types';
@@ -19,7 +19,7 @@ interface CardCardProps {
 }
 
 export default function CardCard({ card, onCompare, isInCompare, onApplyClick }: CardCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // eslint-disable-line @typescript-eslint/no-unused-vars
   const ekOffer = getEarnKaroOffer(card.slug);
 
   const handleApplyClick = async (e: React.MouseEvent) => {

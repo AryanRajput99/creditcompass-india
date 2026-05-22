@@ -8,7 +8,6 @@ import Footer from '@/components/layout/Footer';
 import {
   CheckCircle,
   XCircle,
-  ExternalLink,
   ArrowLeft,
   Star,
   CreditCard as CardIcon,
@@ -18,6 +17,7 @@ import {
 import { formatRupee, CATEGORY_ICONS, CATEGORY_LABELS, CATEGORY_COLORS, cn } from '@/lib/utils';
 import { CreditCard } from '@/types';
 import { getEarnKaroOffer } from '@/data/earnkaro-offers';
+import { getMonetizedSlugs } from '@/lib/monetization';
 import ApplyButton from '@/components/ui/ApplyButton';
 
 interface PageProps {
@@ -447,7 +447,7 @@ export default async function CardDetailPage({ params }: PageProps) {
                 Recommended For You
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {(relatedCards as any[]).map((rel) => (
+                {((relatedCards as CreditCard[]) || []).map((rel) => (
                   <div key={rel.id} className="group border border-[hsl(var(--color-border))] rounded-2xl p-4 flex flex-col hover:border-[hsl(var(--color-primary))] hover:shadow-md transition-all bg-white">
                     <div className="h-20 mb-3 flex items-center justify-center p-2 bg-slate-50 rounded-xl relative">
                       {rel.card_image_url ? (
@@ -493,6 +493,60 @@ export default async function CardDetailPage({ params }: PageProps) {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* Comparisons Section */}
+          {relatedCards && relatedCards.length > 0 && (
+            <div className="surface-card p-6 sm:p-8 mt-8">
+              <h2 className="text-xl font-extrabold text-[hsl(var(--color-text))] mb-6 tracking-tight">
+                Compare {typedCard.name} with Alternatives
+              </h2>
+              <div className="space-y-4">
+                {((relatedCards as CreditCard[]) || []).map((rel) => {
+                  const monetizedSlugs = getMonetizedSlugs();
+                  const indexA = monetizedSlugs.indexOf(typedCard.slug);
+                  const indexB = monetizedSlugs.indexOf(rel.slug);
+                  const compSlug = indexA !== -1 && indexB !== -1
+                    ? (indexA < indexB ? `${typedCard.slug}-vs-${rel.slug}` : `${rel.slug}-vs-${typedCard.slug}`)
+                    : (typedCard.slug < rel.slug ? `${typedCard.slug}-vs-${rel.slug}` : `${rel.slug}-vs-${typedCard.slug}`);
+
+                  return (
+                    <Link
+                      key={rel.id}
+                      href={`/compare/${compSlug}`}
+                      className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-[hsl(var(--color-border))] rounded-2xl hover:border-[hsl(var(--color-primary))] hover:shadow-md transition-all bg-white group gap-4"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-8 bg-slate-50 border border-[hsl(var(--color-border))] rounded-lg flex items-center justify-center p-1 flex-shrink-0">
+                          {rel.card_image_url ? (
+                            <Image
+                              src={rel.card_image_url}
+                              alt={rel.name}
+                              width={40}
+                              height={25}
+                              className="object-contain"
+                            />
+                          ) : (
+                            <CardIcon className="w-5 h-5 text-[hsl(var(--color-text-tertiary))]" />
+                          )}
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold text-[hsl(var(--color-text-tertiary))] uppercase tracking-widest">
+                            Side-by-Side Comparison
+                          </p>
+                          <h3 className="font-extrabold text-sm text-[hsl(var(--color-text))] group-hover:text-[hsl(var(--color-primary))] transition-colors mt-0.5">
+                            {typedCard.name} <span className="text-[hsl(var(--color-text-tertiary))] font-normal">vs</span> {rel.name}
+                          </h3>
+                        </div>
+                      </div>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--color-primary))] group-hover:translate-x-1 transition-transform self-end sm:self-auto">
+                        View Comparison →
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           )}

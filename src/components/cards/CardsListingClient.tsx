@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Filter, Search, X, GitCompare, SlidersHorizontal } from 'lucide-react';
+import { Search, X, GitCompare, SlidersHorizontal } from 'lucide-react';
 import { CreditCard, Category } from '@/types';
 import CardCard from '@/components/cards/CardCard';
-import { CATEGORY_LABELS, CATEGORY_ICONS } from '@/lib/utils';
-import Link from 'next/link';
+import { CATEGORY_ICONS } from '@/lib/utils';
 
 interface CardsListingClientProps {
   initialCards: CreditCard[];

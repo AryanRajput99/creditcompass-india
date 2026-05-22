@@ -5,7 +5,7 @@ import { CreditCard } from '@/types';
  * Filters a list of cards to only include those that have an active EarnKaro affiliate link.
  * This ensures the website only displays revenue-generating cards.
  */
-export function filterMonetizedCards(cards: any[] | null): CreditCard[] {
+export function filterMonetizedCards(cards: CreditCard[] | null): CreditCard[] {
   if (!cards) return [];
   
   const monetizedSlugs = new Set(EARNKARO_OFFERS.map(offer => offer.card_slug));

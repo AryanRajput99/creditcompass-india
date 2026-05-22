@@ -2,7 +2,7 @@ export default function AxisAirtelReview() {
   return (
     <>
       <h2>Axis Bank Airtel Credit Card Review — The Ultimate Utility Card?</h2>
-      <p>If you pay mobile bills, broadband charges, electricity bills, or order food on Swiggy and Zomato, the **Axis Bank Airtel Credit Card** is arguably the best entry-level cashback card in the market. Let's do a complete, honest review of this card for 2025.</p>
+      <p>If you pay mobile bills, broadband charges, electricity bills, or order food on Swiggy and Zomato, the **Axis Bank Airtel Credit Card** is arguably the best entry-level cashback card in the market. Let&apos;s do a complete, honest review of this card for 2025.</p>
 
       <h2>Key Specifications &amp; Fees</h2>
       <ul>

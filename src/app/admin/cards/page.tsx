@@ -94,7 +94,7 @@ export default async function AdminCardsPage() {
               ) : (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center text-zinc-500">
-                    No credit cards found. Click "Add New Card" to get started.
+                    No credit cards found. Click &ldquo;Add New Card&rdquo; to get started.
                   </td>
                 </tr>
               )}

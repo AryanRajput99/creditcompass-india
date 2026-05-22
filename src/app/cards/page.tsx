@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CardsListingClient from '@/components/cards/CardsListingClient';

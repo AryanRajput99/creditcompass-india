@@ -57,8 +57,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!cards || cards.length < 2) return { title: 'Compare Cards' };
 
   const [a, b] = cards;
+  const currentYear = new Date().getFullYear();
   return {
-    title: `${a.name} vs ${b.name} — Which is Better? (2025 Comparison)`,
+    title: `${a.name} vs ${b.name} — Which is Better? (${currentYear} Comparison)`,
     description: `Detailed comparison of ${a.name} (${a.bank_name}) vs ${b.name} (${b.bank_name}). Compare fees, cashback, rewards, lounge access & eligibility side-by-side. Find out which card is right for you.`,
     alternates: {
       canonical: `/compare/${slugs}`,
@@ -129,13 +130,41 @@ export default async function ComparisonPage({ params }: PageProps) {
     .limit(6);
 
   // JSON-LD Schema
+  const currentYear = new Date().getFullYear();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: `${cardA.name} vs ${cardB.name} — Detailed Comparison 2025`,
+    headline: `${cardA.name} vs ${cardB.name} — Detailed Comparison ${currentYear}`,
     description: `Side-by-side comparison of ${cardA.name} and ${cardB.name} credit cards.`,
     author: { '@type': 'Organization', name: 'CreditCompass India' },
     datePublished: new Date().toISOString().split('T')[0],
+  };
+
+  // Breadcrumb Schema
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://creditcompass-india.vercel.app';
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Compare',
+        item: `${baseUrl}/compare`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `${cardA.name} vs ${cardB.name}`,
+        item: `${baseUrl}/compare/${slugs}`,
+      },
+    ],
   };
 
   // FAQ Schema
@@ -179,19 +208,26 @@ export default async function ComparisonPage({ params }: PageProps) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Navbar />
 
       <main className="min-h-screen bg-[hsl(var(--color-bg-secondary))] pt-24 pb-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-          {/* Breadcrumb */}
-          <Link
-            href="/cards"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--color-text-secondary))] hover:text-[hsl(var(--color-primary))] transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to all cards
-          </Link>
+          {/* Visual Breadcrumbs */}
+          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[hsl(var(--color-text-secondary))] mb-8 bg-white/40 backdrop-blur px-4 py-2.5 rounded-xl border border-[hsl(var(--color-border))] inline-flex shadow-sm">
+            <Link href="/" className="hover:text-[hsl(var(--color-primary))] transition-colors">
+              Home
+            </Link>
+            <span className="text-[hsl(var(--color-text-tertiary))]">/</span>
+            <Link href="/compare" className="hover:text-[hsl(var(--color-primary))] transition-colors">
+              Compare
+            </Link>
+            <span className="text-[hsl(var(--color-text-tertiary))]">/</span>
+            <span className="text-[hsl(var(--color-text))] font-bold truncate max-w-[200px] sm:max-w-none">
+              {cardA.name} vs {cardB.name}
+            </span>
+          </div>
 
           {/* Title */}
           <div className="text-center mb-12">

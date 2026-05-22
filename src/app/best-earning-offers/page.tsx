@@ -59,7 +59,7 @@ export default async function BestEarningOffersPage() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-[0.9] mb-6">
-                India's Highest<br />
+                India&apos;s Highest<br />
                 <span className="text-emerald-400">Paying Offers.</span>
               </h1>
               <p className="text-slate-300 text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto">
@@ -120,7 +120,7 @@ export default async function BestEarningOffersPage() {
             </div>
 
             <div className="space-y-4">
-              {cardsWithOffers.map(({ offer, card }, idx) => (
+              {cardsWithOffers.map(({ offer }, idx) => (
                 <div
                   key={offer.card_slug}
                   className={`group bg-[hsl(var(--color-bg))] border rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5 transition-all ${

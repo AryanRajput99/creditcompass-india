@@ -1,15 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 export default function AffiliateDisclosureBanner() {
   const [dismissed, setDismissed] = useState(true); // start hidden to avoid hydration flash
+  const checkedRef = useRef(false);
 
   useEffect(() => {
+    if (checkedRef.current) return;
+    checkedRef.current = true;
     const wasDismissed = sessionStorage.getItem('affiliate-banner-dismissed');
     if (!wasDismissed) {
-      setDismissed(false);
+      // Use requestAnimationFrame to avoid synchronous setState in effect
+      requestAnimationFrame(() => setDismissed(false));
     }
   }, []);
 

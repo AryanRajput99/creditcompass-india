@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { ArrowLeft, Clock, Wrench } from 'lucide-react';
+import { ArrowLeft, Wrench } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Coming Soon — CreditCompass India',

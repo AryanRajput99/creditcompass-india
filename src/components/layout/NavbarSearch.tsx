@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, X, CreditCard, Sparkles, HelpCircle } from 'lucide-react';
+import { Search, X, CreditCard, HelpCircle } from 'lucide-react';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 
 interface NavbarSearchProps {
@@ -11,8 +11,14 @@ interface NavbarSearchProps {
 
 export default function NavbarSearch({ className }: NavbarSearchProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQueryRaw] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // Wrap setQuery to also reset selected index (avoids setState-in-effect)
+  const setQuery = (value: string) => {
+    setQueryRaw(value);
+    setSelectedIndex(0);
+  };
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -32,6 +38,12 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
     { label: 'Highest Cashback Cards list', href: '/category/cashback', icon: '💰' },
   ];
 
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+    setQueryRaw('');
+    setSelectedIndex(0);
+  }, []);
+
   // Hot-key for search (Command+K or Ctrl+K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -40,17 +52,13 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
         setIsOpen((prev) => !prev);
       }
       if (e.key === 'Escape') {
-        setIsOpen(false);
+        closeModal();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [closeModal]);
 
-  // Reset index when search query changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
 
   // Focus input when modal opens
   useEffect(() => {
@@ -59,7 +67,6 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      setQuery('');
     }
     return () => {
       document.body.style.overflow = '';
@@ -70,7 +77,7 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
+        closeModal();
       }
     };
     if (isOpen) {
@@ -79,10 +86,10 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, closeModal]);
 
   const handleSelect = (href: string) => {
-    setIsOpen(false);
+    closeModal();
     router.push(href);
   };
 
@@ -143,7 +150,7 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
                 className="flex-1 bg-transparent text-[15px] font-medium text-[hsl(var(--color-text))] placeholder:text-[hsl(var(--color-text-tertiary))] outline-none border-none"
               />
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() => closeModal()}
                 className="p-1 hover:bg-[hsl(var(--color-bg-secondary))] rounded-lg transition-colors"
               >
                 <X className="w-4 h-4 text-[hsl(var(--color-text-secondary))]" />

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CreditCard, Shield, ExternalLink, Mail } from 'lucide-react';
+import { CreditCard, Shield, Mail } from 'lucide-react';
 
 const FOOTER_LINKS = {
   'Credit Cards': [

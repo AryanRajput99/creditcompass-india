@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CreditCard } from '@/types';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface UPICalculatorProps {
   topUPICards: CreditCard[];
@@ -83,7 +84,7 @@ export default function UPICalculator({ topUPICards }: UPICalculatorProps) {
                   >
                     <div className="w-12 h-8 bg-[hsl(var(--color-bg-secondary))] rounded-md overflow-hidden flex-shrink-0 flex items-center justify-center">
                       {card.card_image_url ? (
-                        <img src={card.card_image_url} alt={card.name} className="w-full h-full object-contain" />
+                        <Image src={card.card_image_url} alt={card.name} width={48} height={32} className="w-full h-full object-contain" />
                       ) : (
                         <span className="text-[8px] font-bold opacity-30">IMAGE</span>
                       )}

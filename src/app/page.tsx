@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CardCard from '@/components/cards/CardCard';
 import { ArrowRight, Star, Zap, Percent, BadgePercent, BadgeIndianRupee, TrendingUp } from 'lucide-react';
-import { CreditCard, Category } from '@/types';
+import { CreditCard } from '@/types';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 import { getMonetizedSlugs } from '@/lib/monetization';
 import QuickMatcher from '@/components/ui/QuickMatcher';

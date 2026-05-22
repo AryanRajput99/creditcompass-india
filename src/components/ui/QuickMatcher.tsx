@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Sparkles, ArrowRight, ShieldCheck, Zap, RefreshCw, BadgeIndianRupee } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, RefreshCw, BadgeIndianRupee } from 'lucide-react';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 
 export default function QuickMatcher() {

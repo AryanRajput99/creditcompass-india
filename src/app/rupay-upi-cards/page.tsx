@@ -51,7 +51,7 @@ export default async function RupayUPIPage() {
             </h1>
             
             <p className="text-lg md:text-xl text-[hsl(var(--color-text-secondary))] max-w-2xl mx-auto font-medium mb-10">
-              No more "empty" payments. Link your RuPay credit card to UPI and earn cashback on chai, groceries, and shopping.
+              No more &ldquo;empty&rdquo; payments. Link your RuPay credit card to UPI and earn cashback on chai, groceries, and shopping.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -71,7 +71,7 @@ export default async function RupayUPIPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl font-extrabold text-[hsl(var(--color-text))] tracking-tight mb-4">How much can you save?</h2>
               <p className="text-[hsl(var(--color-text-secondary))] font-medium max-w-xl mx-auto">
-                Most Indians spend ₹10,000 - ₹30,000 monthly on UPI. See how much you're leaving on the table.
+                Most Indians spend ₹10,000 - ₹30,000 monthly on UPI. See how much you&apos;re leaving on the table.
               </p>
             </div>
             
@@ -124,7 +124,7 @@ export default async function RupayUPIPage() {
                   Are there any charges for UPI CC scans?
                 </h3>
                 <p className="text-[hsl(var(--color-text-secondary))] leading-relaxed font-medium pl-11">
-                  For users (you), there are **zero charges**. You pay the same amount as a normal UPI scan. The merchant might pay a fee, but that doesn't affect your balance.
+                  For users (you), there are **zero charges**. You pay the same amount as a normal UPI scan. The merchant might pay a fee, but that doesn&apos;t affect your balance.
                 </p>
               </div>
 
