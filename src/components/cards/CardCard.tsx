@@ -22,30 +22,25 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
   const [isHovered, setIsHovered] = useState(false); // eslint-disable-line @typescript-eslint/no-unused-vars
   const ekOffer = getEarnKaroOffer(card.slug);
 
-  const handleApplyClick = async (e: React.MouseEvent) => {
-    e.preventDefault();
+  // Use EarnKaro link if available, otherwise fall back to card's affiliate_url
+  const finalUrl = ekOffer?.earnkaro_url ?? card.affiliate_url;
+
+  const handleApplyClick = (e: React.MouseEvent) => {
     if (onApplyClick) {
       onApplyClick(card);
     }
-    // Use EarnKaro link if available, otherwise fall back to card's affiliate_url
-    const finalUrl = ekOffer?.earnkaro_url ?? card.affiliate_url;
-
-    // Track click & redirect
+    // Non-blocking click tracking via sendBeacon (doesn't delay navigation)
     try {
-      await fetch('/api/track-click', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          card_id: card.id,
-          card_name: card.name,
-          card_slug: card.slug,
-          affiliate_url: finalUrl,
-        }),
-      });
+      navigator.sendBeacon('/api/track-click', JSON.stringify({
+        card_id: card.id,
+        card_name: card.name,
+        card_slug: card.slug,
+        affiliate_url: finalUrl,
+      }));
     } catch {
       // Non-blocking
     }
-    window.open(finalUrl, '_blank', 'noopener,noreferrer');
+    // Don't preventDefault — let the <a> tag handle navigation naturally
   };
 
 
@@ -163,13 +158,16 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
       {/* Actions */}
       <div className="flex flex-col gap-3 mt-2">
         <div className="flex gap-2">
-          <button
+          <a
+            href={finalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={handleApplyClick}
-            className="btn-apply flex-1 py-3"
+            className="btn-apply flex-1 py-3 text-center"
           >
             Apply Now
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
           
           {onCompare && (
             <button

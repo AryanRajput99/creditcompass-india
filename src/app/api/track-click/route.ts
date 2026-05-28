@@ -9,7 +9,9 @@ import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    // sendBeacon sends text/plain, so we parse the raw text as JSON
+    const rawBody = await request.text();
+    const body = JSON.parse(rawBody);
     const { card_id, card_name, card_slug, affiliate_url } = body;
 
     if (!card_name || !card_slug || !affiliate_url) {

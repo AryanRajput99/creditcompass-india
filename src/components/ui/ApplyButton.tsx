@@ -23,36 +23,31 @@ export default function ApplyButton({
   className,
   children
 }: ApplyButtonProps) {
-  const handleClick = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    // Track click
+  const handleClick = () => {
+    // Non-blocking click tracking via sendBeacon
     try {
-      await fetch('/api/track-click', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          card_id: cardId,
-          card_name: cardName,
-          card_slug: cardSlug,
-          affiliate_url: affiliateUrl,
-        }),
-      });
+      navigator.sendBeacon('/api/track-click', JSON.stringify({
+        card_id: cardId,
+        card_name: cardName,
+        card_slug: cardSlug,
+        affiliate_url: affiliateUrl,
+      }));
     } catch {
       // Ignore tracking errors
     }
-    
-    // Redirect to affiliate URL in a new tab
-    window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
+    // Don't preventDefault — let the <a> tag handle navigation naturally
   };
 
   return (
-    <button
+    <a
+      href={affiliateUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={handleClick}
-      className={cn("btn-base btn-apply px-8 py-3.5 text-base gap-3 shadow-lg", className)}
+      className={cn("btn-base btn-apply px-8 py-3.5 text-base gap-3 shadow-lg text-center", className)}
     >
       {children || `Apply Now on ${bankName}`}
       <ExternalLink className="w-5 h-5" />
-    </button>
+    </a>
   );
 }
