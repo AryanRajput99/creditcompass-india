@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import CardQuiz from '@/components/quiz/CardQuiz';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'Which Credit Card is Right for You? — Free Quiz | CreditCompass India',
@@ -8,5 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default function QuizPage() {
-  return <CardQuiz />;
+  return (
+    <div className="bg-[hsl(var(--color-bg))] min-h-screen">
+      <Navbar />
+      <main className="min-h-screen bg-[hsl(var(--color-bg-secondary))] pt-20">
+        <CardQuiz />
+      </main>
+      <Footer />
+    </div>
+  );
 }

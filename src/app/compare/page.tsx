@@ -186,7 +186,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
                   >
                     <Link
                       href={`/compare?ids=${ids.filter((id) => id !== card.id).join(',')}`}
-                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity shadow-md"
                       title="Remove from compare"
                     >
                       <Trash2 className="w-3 h-3" />

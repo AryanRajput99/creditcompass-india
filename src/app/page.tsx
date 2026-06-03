@@ -27,29 +27,29 @@ export default async function Home() {
     .limit(3);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-[hsl(var(--color-bg))] min-h-screen">
       <Navbar />
       
       {/* 1. HERO SECTION */}
-      <section className="bg-white pt-28 pb-16 md:pt-40 md:pb-24">
+      <section className="bg-[hsl(var(--color-bg))] pt-28 pb-16 md:pt-40 md:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             {/* Left Info Column */}
             <div className="lg:col-span-7 text-left">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-bold tracking-widest uppercase mb-8">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[hsl(var(--color-primary)/10%)] text-[hsl(var(--color-primary))] border border-[hsl(var(--color-primary)/20%)] text-[10px] font-bold tracking-widest uppercase mb-8">
                 The New Standard
               </span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tighter">
-                Find the perfect <br /> <span className="text-blue-600">Credit Card</span>.
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[hsl(var(--color-text))] leading-[1.1] mb-6 tracking-tighter">
+                Find the perfect <br /> <span className="text-[hsl(var(--color-primary))]">Credit Card</span>.
               </h1>
-              <p className="text-base sm:text-lg text-slate-600 max-w-xl mb-8 leading-relaxed font-medium">
+              <p className="text-base sm:text-lg text-[hsl(var(--color-text-secondary))] max-w-xl mb-8 leading-relaxed font-medium">
                 Stop guessing. Compare fees, cashback, and rewards across 50+ top Indian cards to maximize your benefits today.
               </p>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <Link href="/cards" className="btn-base btn-apply px-8 py-3.5 text-sm font-bold text-center">
+                <Link href="/cards" className="btn-base btn-apply w-full sm:w-auto text-center">
                   Browse All Cards <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Link>
-                <Link href="/compare" className="btn-base btn-secondary px-8 py-3.5 text-sm font-bold border-2 text-center">
+                <Link href="/compare" className="btn-base btn-secondary w-full sm:w-auto text-center border">
                   Compare Cards
                 </Link>
               </div>
@@ -61,18 +61,20 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Trust Logos */}
-          <div className="pt-16 border-t border-gray-100 text-center">
-            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-8">Official Partners</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-35 grayscale font-black text-lg">
-              <span>HDFC BANK</span>
-              <span>SBI CARD</span>
-              <span>ICICI BANK</span>
-              <span>AXIS BANK</span>
+          {/* Supported Issuers / Partners Cards */}
+          <div className="pt-16 border-t border-[hsl(var(--color-border))] text-center">
+            <p className="text-[10px] font-bold text-[hsl(var(--color-text-secondary))] uppercase tracking-widest mb-6">Supported Cards & Issuers</p>
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+              {['HDFC Bank', 'SBI Card', 'ICICI Bank', 'Axis Bank', 'IDFC First', 'AU Small Finance'].map((bank) => (
+                <span key={bank} className="px-5 py-2.5 bg-[hsl(var(--color-bg-secondary))] border border-[hsl(var(--color-border))] rounded-xl text-xs font-extrabold text-[hsl(var(--color-text-secondary))] hover:border-[hsl(var(--color-primary))] hover:text-[hsl(var(--color-primary))] transition-all shadow-sm">
+                  {bank}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
       {/* 1.5 UPI TEASER SECTION */}
       <section className="bg-slate-900 py-24 overflow-hidden relative">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,hsl(var(--color-primary)/0.2)_0%,transparent_50%)]" />
@@ -129,60 +131,60 @@ export default async function Home() {
       </section>
 
       {/* 2. CATEGORIES SECTION */}
-      <section className="bg-slate-50 border-y border-gray-100 py-24 md:py-40">
+      <section className="bg-[hsl(var(--color-bg-secondary))] border-y border-[hsl(var(--color-border))] py-24 md:py-40">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-24">
-            <h2 className="text-3xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tighter">Explore by Category</h2>
-            <p className="text-slate-600 text-xl max-w-xl mx-auto font-medium">Choose the card that fits your spending habits.</p>
+            <h2 className="text-3xl md:text-6xl font-extrabold text-[hsl(var(--color-text))] mb-6 tracking-tighter">Explore by Category</h2>
+            <p className="text-[hsl(var(--color-text-secondary))] text-xl max-w-xl mx-auto font-medium">Choose the card that fits your spending habits.</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            <Link href="/category/cashback" className="surface-card p-10 flex flex-col items-center text-center group bg-white shadow-sm hover:shadow-2xl transition-all">
+            <Link href="/category/cashback" className="surface-card p-10 flex flex-col items-center text-center group">
               <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 text-emerald-600">
                 <BadgePercent className="w-8 h-8" />
               </div>
-              <h3 className="font-bold text-2xl text-slate-900 mb-3">Cashback</h3>
-              <p className="text-sm text-slate-500 font-medium">Get flat returns on every spend.</p>
+              <h3 className="font-bold text-2xl text-[hsl(var(--color-text))] mb-3">Cashback</h3>
+              <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">Get flat returns on every spend.</p>
             </Link>
 
-            <Link href="/category/travel" className="surface-card p-10 flex flex-col items-center text-center group bg-white shadow-sm hover:shadow-2xl transition-all">
+            <Link href="/category/travel" className="surface-card p-10 flex flex-col items-center text-center group">
               <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 text-indigo-600">
                 <Star className="w-8 h-8" />
               </div>
-              <h3 className="font-bold text-2xl text-slate-900 mb-3">Travel</h3>
-              <p className="text-sm text-slate-500 font-medium">Unlock airport lounge access.</p>
+              <h3 className="font-bold text-2xl text-[hsl(var(--color-text))] mb-3">Travel</h3>
+              <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">Unlock airport lounge access.</p>
             </Link>
 
-            <Link href="/category/lifetime-free" className="surface-card p-10 flex flex-col items-center text-center group bg-white shadow-sm hover:shadow-2xl transition-all">
+            <Link href="/category/lifetime-free" className="surface-card p-10 flex flex-col items-center text-center group">
               <div className="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center mb-8 text-teal-600">
                 <Zap className="w-8 h-8" />
               </div>
-              <h3 className="font-bold text-2xl text-slate-900 mb-3">Zero Fee</h3>
-              <p className="text-sm text-slate-500 font-medium">No joining or annual fees.</p>
+              <h3 className="font-bold text-2xl text-[hsl(var(--color-text))] mb-3">Zero Fee</h3>
+              <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">No joining or annual fees.</p>
             </Link>
 
-            <Link href="/category/shopping" className="surface-card p-10 flex flex-col items-center text-center group bg-white shadow-sm hover:shadow-2xl transition-all">
+            <Link href="/category/shopping" className="surface-card p-10 flex flex-col items-center text-center group">
               <div className="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center mb-8 text-rose-600">
                 <Percent className="w-8 h-8" />
               </div>
-              <h3 className="font-bold text-2xl text-slate-900 mb-3">Shopping</h3>
-              <p className="text-sm text-slate-500 font-medium">Exclusive online discounts.</p>
+              <h3 className="font-bold text-2xl text-[hsl(var(--color-text))] mb-3">Shopping</h3>
+              <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">Exclusive online discounts.</p>
             </Link>
           </div>
         </div>
       </section>
 
       {/* 3. TOP PICKS SECTION */}
-      <section className="bg-white py-24 md:py-40">
+      <section className="bg-[hsl(var(--color-bg))] py-24 md:py-40">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
             <div className="max-w-3xl">
-              <h2 className="text-3xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tighter">Top Picks for You</h2>
-              <p className="text-slate-600 text-xl leading-relaxed font-medium">Handpicked cards for maximum rewards and travel benefits.</p>
+              <h2 className="text-3xl md:text-6xl font-extrabold text-[hsl(var(--color-text))] mb-6 tracking-tighter">Top Picks for You</h2>
+              <p className="text-[hsl(var(--color-text-secondary))] text-xl leading-relaxed font-medium">Handpicked cards for maximum rewards and travel benefits.</p>
             </div>
-            <Link href="/cards" className="btn-base btn-secondary px-10 py-4 text-base font-bold group border-2">
+            <Link href="/cards" className="btn-base btn-secondary group border">
               View All Cards
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 

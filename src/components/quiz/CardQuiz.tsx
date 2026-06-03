@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ExternalLink, ChevronRight, RotateCcw, BadgeIndianRupee, CheckCircle } from 'lucide-react';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
+import { cn } from '@/lib/utils';
+import { ChevronRight, CheckCircle, BadgeIndianRupee, ExternalLink, RotateCcw } from 'lucide-react';
 
 // ─── Quiz Data ───────────────────────────────────────────────
 const STEPS = [
@@ -134,7 +135,7 @@ export default function CardQuiz() {
   const [isHindi, setIsHindi] = useState(false);
 
   const step = STEPS[currentStep];
-  const progress = ((currentStep) / STEPS.length) * 100;
+  const progress = ((currentStep + 1) / STEPS.length) * 100;
 
   function handleAnswer(value: string) {
     const newAnswers = { ...answers, [step.id]: value };
@@ -154,43 +155,43 @@ export default function CardQuiz() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 flex flex-col items-center justify-center px-4 py-16">
-      <div className="w-full max-w-2xl">
+    <div className="max-w-3xl mx-auto px-4 py-10 sm:py-16">
+      <div className="w-full max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
           <div className="text-5xl mb-4">🧭</div>
-          <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-2">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-[hsl(var(--color-text))] tracking-tight mb-2">
             {isHindi ? 'Apna Perfect Credit Card Dhundho' : 'Find Your Perfect Credit Card'}
           </h1>
-          <p className="text-slate-400 font-medium">
+          <p className="text-[hsl(var(--color-text-secondary))] font-medium">
             {isHindi ? '4 sawaalon mein — 30 seconds mein result' : '4 quick questions · Results in 30 seconds'}
           </p>
           <button
             onClick={() => setIsHindi(!isHindi)}
-            className="mt-3 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors underline"
+            className="mt-3 text-xs font-bold text-[hsl(var(--color-primary))] hover:underline cursor-pointer"
           >
             {isHindi ? 'Switch to English' : 'हिंदी में देखें'}
           </button>
         </div>
 
         {!recommendations ? (
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
+          <div className="surface-card p-6 sm:p-8 shadow-xl">
             {/* Progress bar */}
             <div className="mb-8">
-              <div className="flex justify-between text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">
+              <div className="flex justify-between text-[11px] font-bold text-[hsl(var(--color-text-secondary))] uppercase tracking-widest mb-2">
                 <span>{isHindi ? `सवाल ${currentStep + 1} / ${STEPS.length}` : `Step ${currentStep + 1} of ${STEPS.length}`}</span>
                 <span>{Math.round(progress)}%</span>
               </div>
-              <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-1.5 bg-[hsl(var(--color-bg-secondary))] border border-[hsl(var(--color-border))] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-500"
+                  className="h-full bg-[hsl(var(--color-primary))] rounded-full transition-all duration-500"
                   style={{ width: `${progress}%` }}
                 />
               </div>
             </div>
 
             {/* Question */}
-            <h2 className="text-xl md:text-2xl font-black text-white mb-8 leading-snug">
+            <h2 className="text-xl md:text-2xl font-extrabold text-[hsl(var(--color-text))] mb-8 leading-snug">
               {isHindi ? step.hindiQuestion : step.question}
             </h2>
 
@@ -200,13 +201,13 @@ export default function CardQuiz() {
                 <button
                   key={option.value}
                   onClick={() => handleAnswer(option.value)}
-                  className="group flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-blue-400/50 transition-all text-left"
+                  className="group flex items-center gap-4 p-4 bg-white hover:bg-[hsl(var(--color-bg-secondary))] border border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary))] rounded-2xl transition-all text-left cursor-pointer"
                 >
                   <span className="text-2xl flex-shrink-0">{option.emoji}</span>
-                  <span className="font-bold text-white group-hover:text-blue-300 transition-colors">
+                  <span className="font-bold text-[hsl(var(--color-text))] group-hover:text-[hsl(var(--color-primary))] transition-colors">
                     {isHindi ? option.hindiLabel : option.label}
                   </span>
-                  <ChevronRight className="w-4 h-4 text-slate-500 ml-auto flex-shrink-0 group-hover:text-blue-400 transition-colors" />
+                  <ChevronRight className="w-4 h-4 text-[hsl(var(--color-text-tertiary))] ml-auto flex-shrink-0 group-hover:text-[hsl(var(--color-primary))] transition-colors" />
                 </button>
               ))}
             </div>
@@ -215,13 +216,13 @@ export default function CardQuiz() {
           // Results
           <div>
             <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-emerald-400" />
+              <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-emerald-600" />
               </div>
-              <h2 className="text-2xl font-black text-white mb-2">
+              <h2 className="text-2xl font-extrabold text-[hsl(var(--color-text))] mb-2">
                 {isHindi ? 'Aapke Liye Best Cards 🎉' : 'Your Best Matches 🎉'}
               </h2>
-              <p className="text-slate-400 font-medium">
+              <p className="text-[hsl(var(--color-text-secondary))] font-medium">
                 {isHindi ? 'Ye cards aapki profile ke hisaab se perfectly match karte hain' : 'These cards are perfectly matched to your profile'}
               </p>
             </div>
@@ -230,23 +231,26 @@ export default function CardQuiz() {
               {recommendations.map((offer, idx) => (
                 <div
                   key={offer.card_slug}
-                  className={`bg-white/5 border rounded-2xl p-6 ${idx === 0 ? 'border-emerald-500/50 ring-1 ring-emerald-500/20' : 'border-white/10'}`}
+                  className={cn(
+                    'surface-card p-6 shadow-sm border transition-all',
+                    idx === 0 ? 'border-emerald-500/50 ring-1 ring-emerald-500/20 bg-emerald-50/10' : ''
+                  )}
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">#{idx + 1} Match</span>
+                        <span className="text-[10px] font-extrabold text-[hsl(var(--color-text-secondary))] uppercase tracking-widest">#{idx + 1} Match</span>
                         {idx === 0 && (
-                          <span className="text-[9px] font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full uppercase tracking-widest">
+                          <span className="text-[9px] font-extrabold bg-emerald-500/10 text-emerald-700 border border-emerald-500/25 px-2 py-0.5 rounded-full uppercase tracking-widest">
                             Best Pick
                           </span>
                         )}
                       </div>
-                      <p className="font-black text-white text-lg leading-tight">{offer.card_name}</p>
-                      <p className="text-sm text-slate-400 font-medium">{offer.bank_name}</p>
+                      <p className="font-extrabold text-[hsl(var(--color-text))] text-lg leading-tight">{offer.card_name}</p>
+                      <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">{offer.bank_name}</p>
                       <div className="flex items-center gap-1.5 mt-2">
-                        <BadgeIndianRupee className="w-3.5 h-3.5 text-emerald-400" />
-                        <span className="text-sm font-extrabold text-emerald-400">
+                        <BadgeIndianRupee className="w-3.5 h-3.5 text-emerald-600" />
+                        <span className="text-sm font-extrabold text-emerald-600">
                           {isHindi ? `Apply karo — ₹${offer.commission.toLocaleString('en-IN')} earn karo` : `Earn ₹${offer.commission.toLocaleString('en-IN')} on approval`}
                         </span>
                       </div>
@@ -255,7 +259,7 @@ export default function CardQuiz() {
                       href={offer.earnkaro_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-emerald-600/20"
+                      className="flex-shrink-0 flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-emerald-600/20"
                     >
                       {isHindi ? 'Apply' : 'Apply Now'} <ExternalLink className="w-3.5 h-3.5" />
                     </a>
@@ -263,18 +267,17 @@ export default function CardQuiz() {
                 </div>
               ))}
             </div>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={reset}
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-white/10 border border-white/20 hover:bg-white/20 text-white rounded-xl font-bold text-sm transition-all"
+                className="btn-base btn-secondary border px-6 py-3 rounded-xl flex items-center justify-center gap-2"
               >
                 <RotateCcw className="w-4 h-4" />
                 {isHindi ? 'Phir Try Karo' : 'Retake Quiz'}
               </button>
               <Link
                 href="/best-earning-offers"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 hover:text-white rounded-xl font-bold text-sm transition-all"
+                className="btn-base btn-primary px-6 py-3 rounded-xl flex items-center justify-center gap-2"
               >
                 {isHindi ? 'Sabhi Offers Dekho' : 'See All Offers'} <ChevronRight className="w-4 h-4" />
               </Link>
