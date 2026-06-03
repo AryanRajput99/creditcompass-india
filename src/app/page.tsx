@@ -9,6 +9,7 @@ import { CreditCard } from '@/types';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 import { getMonetizedSlugs } from '@/lib/monetization';
 import QuickMatcher from '@/components/ui/QuickMatcher';
+import HomeSEOContent from '@/components/home/HomeSEOContent';
 
 export const metadata: Metadata = {
   title: 'CreditCompass India — Find the Best Credit Card',
@@ -251,6 +252,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <HomeSEOContent />
 
       <Footer />
     </div>

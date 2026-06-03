@@ -18,6 +18,7 @@ const FOOTER_LINKS = {
     { label: 'Kotak Cards', href: '/cards?bank=Kotak+Mahindra' },
   ],
   'Resources': [
+    { label: 'About Us', href: '/about' },
     { label: 'Compare Cards', href: '/compare' },
     { label: 'Blog & Guides', href: '/blog' },
     { label: 'Credit Score Guide', href: '/blog/credit-score-guide' },

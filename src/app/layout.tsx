@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import AffiliateDisclosureBanner from '@/components/ui/AffiliateDisclosureBanner';
+import CanonicalLink from '@/components/seo/CanonicalLink';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL('https://creditcompass-india.vercel.app'),
   title: {
     default: 'CreditCompass India — Compare Best Credit Cards 2026',
     template: '%s | CreditCompass India',
@@ -58,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <CanonicalLink />
         {/* Google Analytics */}
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>

@@ -29,9 +29,44 @@ export default async function RupayUPIPage() {
 
   const topUPICards = (rupayCards as CreditCard[])?.slice(0, 5) || [];
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I link any credit card to UPI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Currently, only RuPay network credit cards can be linked to UPI apps like GPay, PhonePe, and Paytm. Visa and Mastercard cards cannot be used for merchant UPI scans yet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there any charges for UPI CC scans?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For users (you), there are zero charges. You pay the same amount as a normal UPI scan. The merchant might pay a fee, but that doesn't affect your balance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which is the best card for UPI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Tata Neu Infinity HDFC and SBI Aurum are top-tier, but for most people, the HDFC Tata Neu Plus or ICICI Coral RuPay are best as they are often offered Lifetime Free."
+        }
+      }
+    ]
+  };
+
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <main className="min-h-screen bg-[hsl(var(--color-bg))] pt-20">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
