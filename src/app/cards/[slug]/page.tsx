@@ -160,17 +160,7 @@ export default async function CardDetailPage({ params }: PageProps) {
             <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
               {/* Card Image */}
               <div className="w-36 h-24 md:w-52 md:h-36 rounded-2xl bg-[hsl(var(--color-bg-secondary))] border border-[hsl(var(--color-border))] flex items-center justify-center flex-shrink-0 p-3 shadow-sm relative">
-                {typedCard.card_image_url ? (
-                  <Image
-                    src={typedCard.card_image_url}
-                    alt={typedCard.name}
-                    width={200}
-                    height={130}
-                    className="object-contain w-full h-full"
-                  />
-                ) : (
                   <CardIcon className="w-12 h-12 text-[hsl(var(--color-text-tertiary))]" />
-                )}
                 {typedCard.is_featured && (
                   <div className="absolute -top-3 -right-3 flex items-center gap-1 px-2.5 py-1 rounded-full border shadow-sm bg-white border-[hsl(var(--color-border))]">
                     <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
@@ -450,17 +440,7 @@ export default async function CardDetailPage({ params }: PageProps) {
                 {((relatedCards as CreditCard[]) || []).map((rel) => (
                   <div key={rel.id} className="group border border-[hsl(var(--color-border))] rounded-2xl p-4 flex flex-col hover:border-[hsl(var(--color-primary))] hover:shadow-md transition-all bg-white">
                     <div className="h-20 mb-3 flex items-center justify-center p-2 bg-slate-50 rounded-xl relative">
-                      {rel.card_image_url ? (
-                        <Image
-                          src={rel.card_image_url}
-                          alt={rel.name}
-                          width={100}
-                          height={60}
-                          className="object-contain max-h-full"
-                        />
-                      ) : (
                         <CardIcon className="w-8 h-8 text-[hsl(var(--color-text-tertiary))]" />
-                      )}
                     </div>
                     <p className="text-[10px] text-[hsl(var(--color-text-tertiary))] font-extrabold uppercase tracking-widest mb-1 truncate">
                       {rel.bank_name}
@@ -520,17 +500,7 @@ export default async function CardDetailPage({ params }: PageProps) {
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-8 bg-slate-50 border border-[hsl(var(--color-border))] rounded-lg flex items-center justify-center p-1 flex-shrink-0">
-                          {rel.card_image_url ? (
-                            <Image
-                              src={rel.card_image_url}
-                              alt={rel.name}
-                              width={40}
-                              height={25}
-                              className="object-contain"
-                            />
-                          ) : (
                             <CardIcon className="w-5 h-5 text-[hsl(var(--color-text-tertiary))]" />
-                          )}
                         </div>
                         <div>
                           <p className="text-[10px] font-bold text-[hsl(var(--color-text-tertiary))] uppercase tracking-widest">

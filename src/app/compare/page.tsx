@@ -193,17 +193,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
                     </Link>
 
                     <div className="h-16 mb-3 flex items-center justify-center bg-[hsl(var(--color-bg-secondary))] rounded-xl border border-[hsl(var(--color-border))] p-2">
-                      {card.card_image_url ? (
-                        <Image
-                          src={card.card_image_url}
-                          alt={card.name}
-                          width={120}
-                          height={75}
-                          className="object-contain h-full"
-                        />
-                      ) : (
                         <CardIcon className="w-8 h-8 text-[hsl(var(--color-text-tertiary))]" />
-                      )}
                     </div>
 
                     <p className="text-[10px] text-[hsl(var(--color-text-tertiary))] font-bold tracking-widest uppercase truncate mb-1">

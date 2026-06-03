@@ -270,11 +270,7 @@ export default async function ComparisonPage({ params }: PageProps) {
 
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-12 bg-[hsl(var(--color-bg-secondary))] rounded-xl border border-[hsl(var(--color-border))] flex items-center justify-center p-2">
-                    {card.card_image_url ? (
-                      <Image src={card.card_image_url} alt={card.name} width={60} height={40} className="object-contain" />
-                    ) : (
                       <CardIcon className="w-6 h-6 text-[hsl(var(--color-text-tertiary))]" />
-                    )}
                   </div>
                   <div>
                     <p className="text-[10px] font-bold text-[hsl(var(--color-text-tertiary))] uppercase tracking-widest">{card.bank_name}</p>

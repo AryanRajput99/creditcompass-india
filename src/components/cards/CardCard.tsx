@@ -85,17 +85,7 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
           </div>
           
           <div className="w-20 h-12 rounded-lg bg-white border border-[hsl(var(--color-border))] flex items-center justify-center flex-shrink-0 overflow-hidden p-1 shadow-sm">
-            {card.card_image_url ? (
-              <Image
-                src={card.card_image_url}
-                alt={card.name}
-                width={80}
-                height={48}
-                className="object-contain w-full h-full"
-              />
-            ) : (
-              <CardIcon className="w-5 h-5 text-[hsl(var(--color-text-tertiary))]" />
-            )}
+            <CardIcon className="w-5 h-5 text-[hsl(var(--color-text-tertiary))]" />
           </div>
         </div>
 
