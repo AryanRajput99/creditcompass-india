@@ -20,7 +20,7 @@ INSERT INTO credit_cards (
 -- 1. IDFC First Mayura (₹2,800)
 (
   'idfc-first-mayura', 'IDFC First Mayura Credit Card', 'IDFC First Bank', 'https://www.idfcfirstbank.com/content/dam/idfcfirstbank/images/cards/credit-card/mayura/Mayura-Credit-Card.png',
-  2999, 2999, 'Waived on ₹5L spend', false, 100000, 750,
+  5999, 5999, 'Waived on ₹5L spend', false, 100000, 750,
   NULL, '10X points on International, 5X on Travel/Dining', '4 domestic + 2 international per quarter', '1% waiver', '5000 bonus points',
   ARRAY['premium', 'travel', 'rewards'], ARRAY['Best lounge access', 'High international rewards', 'Golf privileges'], ARRAY['High fee', 'High income requirement'],
   'Premium travelers', 'https://bitli.in/7oqoQfQ', true, 1,
