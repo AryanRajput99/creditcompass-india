@@ -10,7 +10,7 @@ import { Metadata } from 'next';
 import { getMonetizedSlugs } from '@/lib/monetization';
 
 export const metadata: Metadata = {
-  title: 'Best RuPay Credit Cards for UPI in India (2025) — Compare & Save',
+  title: 'Best RuPay Credit Cards for UPI in India (2026) — Compare & Save',
   description: 'Earn rewards on every UPI scan! Compare the best RuPay credit cards from HDFC, ICICI, Axis, and SBI. Calculate your yearly UPI savings and apply online.',
   keywords: ['best rupay credit card for upi', 'upi on credit card india', 'tata neu hdfc credit card', 'icici coral rupay', 'axis indian oil rupay'],
 };
@@ -86,7 +86,7 @@ export default async function RupayUPIPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
               <div>
-                <h2 className="text-3xl font-extrabold text-[hsl(var(--color-text))] tracking-tight mb-2">Top RuPay UPI Cards 2025</h2>
+                <h2 className="text-3xl font-extrabold text-[hsl(var(--color-text))] tracking-tight mb-2">Top RuPay UPI Cards 2026</h2>
                 <p className="text-[hsl(var(--color-text-secondary))] font-medium">Handpicked cards for maximum UPI rewards.</p>
               </div>
               <Link href="/cards?category=rewards" className="text-[hsl(var(--color-primary))] font-bold text-sm hover:underline">

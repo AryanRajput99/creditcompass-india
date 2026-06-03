@@ -131,7 +131,7 @@ export default function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p className="text-[hsl(var(--color-text-secondary))] text-sm font-medium">
-              Last updated: May 2025 · Applies to creditcompass.in
+              Last updated: June 2026 · Applies to creditcompass.in
             </p>
             <p className="text-[hsl(var(--color-text-secondary))] text-sm mt-3 leading-relaxed">
               Your privacy matters. This policy explains what data we collect, why we collect it, and how we protect it.

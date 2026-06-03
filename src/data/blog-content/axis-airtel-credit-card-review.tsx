@@ -2,7 +2,7 @@ export default function AxisAirtelReview() {
   return (
     <>
       <h2>Axis Bank Airtel Credit Card Review — The Ultimate Utility Card?</h2>
-      <p>If you pay mobile bills, broadband charges, electricity bills, or order food on Swiggy and Zomato, the **Axis Bank Airtel Credit Card** is arguably the best entry-level cashback card in the market. Let&apos;s do a complete, honest review of this card for 2025.</p>
+      <p>If you pay mobile bills, broadband charges, electricity bills, or order food on Swiggy and Zomato, the **Axis Bank Airtel Credit Card** is arguably the best entry-level cashback card in the market. Let&apos;s do a complete, honest review of this card for 2026.</p>
 
       <h2>Key Specifications &amp; Fees</h2>
       <ul>
@@ -67,7 +67,7 @@ export default function AxisAirtelReview() {
       <p>That is **₹11,400 saved annually** on a card that costs just ₹500 per year!</p>
 
       <h2>Complimentary Airport Lounge Access</h2>
-      <p>Unlike many other ₹500 fee cards that have removed lounge benefits in 2025, the Axis Airtel card still gives you **4 complimentary domestic airport lounge visits** per calendar year (subject to spending ₹50,000 in the previous quarter).</p>
+      <p>Unlike many other ₹500 fee cards that have removed lounge benefits in 2026, the Axis Airtel card still gives you **4 complimentary domestic airport lounge visits** per calendar year (subject to spending ₹50,000 in the previous quarter).</p>
 
       <h2>Pros &amp; Cons</h2>
       <h3>What we love:</h3>

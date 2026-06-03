@@ -6,14 +6,14 @@ import AffiliateDisclosureBanner from '@/components/ui/AffiliateDisclosureBanner
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
-    default: 'CreditCompass India — Compare Best Credit Cards 2025',
+    default: 'CreditCompass India — Compare Best Credit Cards 2026',
     template: '%s | CreditCompass India',
   },
   description:
     'Compare 100+ credit cards in India. Find the best cashback, travel, fuel, and lifestyle credit cards. Filter by fees, rewards & benefits. Apply online instantly.',
   keywords: [
     'credit card comparison india',
-    'best credit cards india 2025',
+    'best credit cards india 2026',
     'cashback credit cards india',
     'travel credit cards india',
     'lifetime free credit cards',
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     siteName: 'CreditCompass India',
-    title: 'CreditCompass India — Compare Best Credit Cards 2025',
+    title: 'CreditCompass India — Compare Best Credit Cards 2026',
     description:
       'Compare 100+ credit cards in India. Find the best cashback, travel, fuel and lifestyle credit cards. Apply online instantly.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CreditCompass India — Compare Best Credit Cards 2025',
+    title: 'CreditCompass India — Compare Best Credit Cards 2026',
     description: 'Compare 100+ credit cards in India and find the perfect card for you.',
   },
   verification: {

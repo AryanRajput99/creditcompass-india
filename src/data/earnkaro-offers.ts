@@ -2,7 +2,7 @@
 // EarnKaro Affiliate Offers Registry
 // CreditCompass India
 //
-// ✅ LIVE LINKS — Extracted from EarnKaro account (Finance Deals - May 2025)
+// ✅ LIVE LINKS — Extracted from EarnKaro account (Finance Deals - June 2026)
 // All links are real bitli.in tracking URLs tied to your account.
 // ============================================================
 

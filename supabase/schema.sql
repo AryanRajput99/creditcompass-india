@@ -194,13 +194,13 @@ CREATE POLICY "Anyone can log clicks"
 -- SEED DATA — Default Categories
 -- ============================================================
 INSERT INTO categories (name, label, icon, description, seo_title, seo_description, sort_order) VALUES
-  ('cashback', 'Cashback Cards', '💰', 'Earn cash back on every purchase', 'Best Cashback Credit Cards in India 2025', 'Compare the best cashback credit cards in India. Earn up to 5% cashback on every purchase.', 1),
-  ('travel', 'Travel Cards', '✈️', 'Miles, lounge access & travel perks', 'Best Travel Credit Cards in India 2025', 'Find the best travel credit cards in India with air miles, lounge access, and exclusive travel benefits.', 2),
-  ('fuel', 'Fuel Cards', '⛽', 'Savings on petrol & diesel', 'Best Fuel Credit Cards in India 2025', 'Save on every fuel purchase with India''s best fuel credit cards. Get surcharge waiver and cashback.', 3),
-  ('shopping', 'Shopping Cards', '🛍️', 'Rewards on online & offline shopping', 'Best Shopping Credit Cards in India 2025', 'Maximize savings on Amazon, Flipkart, and more with the best shopping credit cards.', 4),
-  ('business', 'Business Cards', '💼', 'Designed for entrepreneurs & SMEs', 'Best Business Credit Cards in India 2025', 'Top business credit cards in India for entrepreneurs and SMEs with high limits and business benefits.', 5),
-  ('student', 'Student Cards', '🎓', 'First credit card for beginners', 'Best Student Credit Cards in India 2025', 'Get your first credit card as a student. Low income requirement, no annual fee options.', 6),
-  ('lifetime-free', 'Lifetime Free', '🎁', 'Zero annual fee cards forever', 'Best Lifetime Free Credit Cards in India 2025', 'Never pay annual fees again. Discover the best lifetime free credit cards available in India.', 7),
-  ('premium', 'Premium Cards', '👑', 'Luxury benefits & concierge service', 'Best Premium Credit Cards in India 2025', 'Experience luxury with India''s premium credit cards. Concierge service, golf, fine dining and more.', 8),
-  ('rewards', 'Rewards Cards', '⭐', 'Maximum reward points on spending', 'Best Rewards Credit Cards in India 2025', 'Earn maximum reward points on every purchase. Redeem for flights, hotels, and merchandise.', 9)
+  ('cashback', 'Cashback Cards', '💰', 'Earn cash back on every purchase', 'Best Cashback Credit Cards in India 2026', 'Compare the best cashback credit cards in India. Earn up to 5% cashback on every purchase.', 1),
+  ('travel', 'Travel Cards', '✈️', 'Miles, lounge access & travel perks', 'Best Travel Credit Cards in India 2026', 'Find the best travel credit cards in India with air miles, lounge access, and exclusive travel benefits.', 2),
+  ('fuel', 'Fuel Cards', '⛽', 'Savings on petrol & diesel', 'Best Fuel Credit Cards in India 2026', 'Save on every fuel purchase with India''s best fuel credit cards. Get surcharge waiver and cashback.', 3),
+  ('shopping', 'Shopping Cards', '🛍️', 'Rewards on online & offline shopping', 'Best Shopping Credit Cards in India 2026', 'Maximize savings on Amazon, Flipkart, and more with the best shopping credit cards.', 4),
+  ('business', 'Business Cards', '💼', 'Designed for entrepreneurs & SMEs', 'Best Business Credit Cards in India 2026', 'Top business credit cards in India for entrepreneurs and SMEs with high limits and business benefits.', 5),
+  ('student', 'Student Cards', '🎓', 'First credit card for beginners', 'Best Student Credit Cards in India 2026', 'Get your first credit card as a student. Low income requirement, no annual fee options.', 6),
+  ('lifetime-free', 'Lifetime Free', '🎁', 'Zero annual fee cards forever', 'Best Lifetime Free Credit Cards in India 2026', 'Never pay annual fees again. Discover the best lifetime free credit cards available in India.', 7),
+  ('premium', 'Premium Cards', '👑', 'Luxury benefits & concierge service', 'Best Premium Credit Cards in India 2026', 'Experience luxury with India''s premium credit cards. Concierge service, golf, fine dining and more.', 8),
+  ('rewards', 'Rewards Cards', '⭐', 'Maximum reward points on spending', 'Best Rewards Credit Cards in India 2026', 'Earn maximum reward points on every purchase. Redeem for flights, hotels, and merchandise.', 9)
 ON CONFLICT (name) DO NOTHING;

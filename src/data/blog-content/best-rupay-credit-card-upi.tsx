@@ -12,7 +12,7 @@ export default function BestRupayUPI() {
         <li>✅ Emergency mein credit limit available hai</li>
       </ul>
 
-      <h2>2025 Ke Best RuPay UPI Credit Cards</h2>
+      <h2>2026 Ke Best RuPay UPI Credit Cards</h2>
 
       <h3>1. Axis Bank Airtel RuPay Credit Card ⭐ Editor&apos;s Choice</h3>
       <ul>

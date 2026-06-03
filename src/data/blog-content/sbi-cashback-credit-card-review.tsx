@@ -2,7 +2,7 @@ export default function SbiCashbackReview() {
   return (
     <>
       <h2>Is the SBI Cashback Credit Card the Best Cashback Card in India?</h2>
-      <p>If you shop online, the answer is an absolute **yes**. In 2025, the SBI Cashback Credit Card remains the undisputed king for general online shoppers. While most co-branded cards (like Amazon Pay ICICI or Axis Flipkart) lock you into their respective ecosystems, the SBI Cashback card gives you flat cashback almost everywhere online.</p>
+      <p>If you shop online, the answer is an absolute **yes**. In 2026, the SBI Cashback Credit Card remains the undisputed king for general online shoppers. While most co-branded cards (like Amazon Pay ICICI or Axis Flipkart) lock you into their respective ecosystems, the SBI Cashback card gives you flat cashback almost everywhere online.</p>
 
       <h2>Key Highlights &amp; Features</h2>
       <ul>

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!card) return { title: 'Card Not Found' };
 
   return {
-    title: card.seo_title || `${card.name} Review & Benefits 2025`,
+    title: card.seo_title || `${card.name} Review & Benefits 2026`,
     description:
       card.seo_description ||
       `Complete review of ${card.name} by ${card.bank_name}. Check eligibility, fees, rewards, and apply online.`,

@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
               Disclaimer
             </h1>
             <p className="text-[hsl(var(--color-text-secondary))] text-sm font-medium">
-              Last updated: May 2025
+              Last updated: June 2026
             </p>
           </div>
 

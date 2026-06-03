@@ -2,9 +2,9 @@ export default function BestLifetimeFreeCards() {
   return (
     <>
       <h2>Do Lifetime Free Cards Have Decent Rewards?</h2>
-      <p>Yes — and often <em>better</em> than paid cards. Banks want your spending data more than your annual fee. That is why lifetime free cards have become genuinely competitive in 2025.</p>
+      <p>Yes — and often <em>better</em> than paid cards. Banks want your spending data more than your annual fee. That is why lifetime free cards have become genuinely competitive in 2026.</p>
 
-      <h2>Top 5 Lifetime Free Credit Cards in India (2025)</h2>
+      <h2>Top 5 Lifetime Free Credit Cards in India (2026)</h2>
 
       <h3>1. IDFC First SWYP — Best for Students & First-Timers</h3>
       <ul>

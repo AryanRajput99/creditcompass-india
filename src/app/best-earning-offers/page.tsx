@@ -8,11 +8,11 @@ import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 import { BadgeIndianRupee, ExternalLink, TrendingUp, Zap, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Best Credit Card Offers in India (May 2025) — Highest Cashback & Commission',
+  title: 'Best Credit Card Offers in India (June 2026) — Highest Cashback & Commission',
   description:
     'Apply for India\'s highest-paying credit card offers. Get up to ₹2,800 cashback per approved application via EarnKaro. Updated daily with live commission rates.',
   keywords: [
-    'best credit card offers india 2025',
+    'best credit card offers india 2026',
     'earnkaro credit card cashback',
     'highest paying credit card affiliate',
     'credit card cashback on apply',
@@ -55,7 +55,7 @@ export default async function BestEarningOffersPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                 </span>
-                Live EarnKaro Offers • Updated May 2025
+                Live EarnKaro Offers • Updated June 2026
               </div>
 
               <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-[0.9] mb-6">

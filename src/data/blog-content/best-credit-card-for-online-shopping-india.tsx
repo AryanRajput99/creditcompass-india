@@ -5,7 +5,7 @@ export default function BestCreditCardOnlineShopping() {
       <p>If you spend even ₹5,000 per month on Amazon, Flipkart, Myntra, or Swiggy, you are losing ₹3,000 to ₹9,000 per year in potential cashback by using the wrong card. Most people use their salary account debit card — which gives zero rewards — or a generic credit card that earns a measly 0.5% back.</p>
       <p>The right online shopping credit card can earn you 5% to 10X rewards on every purchase. The difference over a year is massive. Let&apos;s break down the top options.</p>
 
-      <h2>Top 5 Credit Cards for Online Shopping in India (2025)</h2>
+      <h2>Top 5 Credit Cards for Online Shopping in India (2026)</h2>
 
       <h3>1. SBI Cashback Credit Card — Best Overall</h3>
       <ul>

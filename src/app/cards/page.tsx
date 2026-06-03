@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Compare All Credit Cards in India 2025',
+  title: 'Compare All Credit Cards in India 2026',
   description:
     'Browse and compare 100+ credit cards from all major Indian banks. Filter by cashback, travel, fuel, fees, and more. Find the best card for your needs.',
 };
@@ -88,7 +88,7 @@ export default async function CardsPage({ searchParams }: PageProps) {
               Compare Credit Cards in India
             </h1>
             <p className="text-[hsl(var(--color-text-secondary))] text-sm font-medium">
-              {count || (cards?.length ?? 0)} cards available • Updated May 2025
+              {count || (cards?.length ?? 0)} cards available • Updated June 2026
             </p>
           </div>
 

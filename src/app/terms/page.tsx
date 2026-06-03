@@ -109,7 +109,7 @@ export default function TermsPage() {
               Terms of Service
             </h1>
             <p className="text-[hsl(var(--color-text-secondary))] text-sm font-medium">
-              Last updated: May 2025 · Applies to creditcompass.in
+              Last updated: June 2026 · Applies to creditcompass.in
             </p>
             <p className="text-[hsl(var(--color-text-secondary))] text-sm mt-3 leading-relaxed">
               Please read these terms carefully before using our comparison services. By using CreditCompass India, you agree to these conditions.

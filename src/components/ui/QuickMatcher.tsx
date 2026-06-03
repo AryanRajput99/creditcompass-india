@@ -24,7 +24,7 @@ export default function QuickMatcher() {
     }
     if (goal === 'travel') {
       return {
-        slug: 'axis-airtel-credit-card-review-2025', // fallback or real slug
+        slug: 'axis-airtel-credit-card-review', // fallback or real slug
         slugReal: 'axis-bank-my-zone-credit-card',
         name: 'Axis Bank My Zone Credit Card',
         reason: 'Offers complimentary lounge access and Swiggy discounts at a low fee!',
@@ -33,7 +33,7 @@ export default function QuickMatcher() {
     }
     if (feature === 'amazon-flipkart' || spend > 25000) {
       return {
-        slug: 'sbi-cashback-credit-card-review-2025',
+        slug: 'sbi-cashback-credit-card-review',
         slugReal: 'sbi-cashback-credit-card',
         name: 'SBI Cashback Credit Card',
         reason: 'Undisputed cashback champion. Gives flat 5% unlimited online savings!',
@@ -42,7 +42,7 @@ export default function QuickMatcher() {
     }
     // Default best-match
     return {
-      slug: 'axis-airtel-credit-card-review-2025',
+      slug: 'axis-airtel-credit-card-review',
       slugReal: 'axis-bank-airtel-credit-card',
       name: 'Axis Bank Airtel Credit Card',
       reason: 'Best utility card. Offers massive 25% cashback on recharges and 10% on Swiggy!',
