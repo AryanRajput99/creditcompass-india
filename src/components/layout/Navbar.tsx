@@ -106,12 +106,6 @@ export default function Navbar() {
           {/* Right side Actions */}
           <div className="hidden lg:flex items-center gap-5">
             <NavbarSearch />
-            <Link href="/admin/login" className="text-[14px] font-bold text-[hsl(var(--color-text-secondary))] hover:text-[hsl(var(--color-primary))] transition-colors ml-2">
-              Sign In
-            </Link>
-            <Link href="/cards" className="btn-base btn-apply px-6 py-2.5 text-xs shadow-md">
-              Get Started
-            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -156,22 +150,7 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <div className="pt-8 mt-8 border-t border-[hsl(var(--color-border))] flex flex-col gap-4">
-              <Link
-                href="/admin/login"
-                onClick={() => setIsOpen(false)}
-                className="btn-base btn-secondary w-full py-4 text-sm font-bold"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/cards"
-                onClick={() => setIsOpen(false)}
-                className="btn-base btn-apply w-full py-4 text-sm font-bold shadow-lg"
-              >
-                Get Started Now
-              </Link>
-            </div>
+
           </div>
         </div>
       )}
