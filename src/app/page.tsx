@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CardCard from '@/components/cards/CardCard';
 import FloatingIcons from '@/components/ui/FloatingIcons';
-import { ArrowRight, Star, Zap, Percent, BadgePercent, BadgeIndianRupee, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, Star, Zap, Percent, BadgePercent, TrendingUp, Shield } from 'lucide-react';
 import { CreditCard } from '@/types';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 import { getMonetizedSlugs } from '@/lib/monetization';
@@ -27,6 +27,12 @@ export default async function Home() {
     .in('slug', getMonetizedSlugs())
     .order('sort_order', { ascending: true })
     .limit(3);
+
+  // Fetch active offers details
+  const { data: topOffersCards } = await supabase
+    .from('credit_cards')
+    .select('*')
+    .in('slug', EARNKARO_OFFERS.slice(0, 3).map(o => o.card_slug));
 
   return (
     <div className="bg-[hsl(var(--color-bg))] min-h-screen">
@@ -211,52 +217,55 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 4. HOT EARNING OFFERS SECTION */}
+      {/* 4. TOP RECOMMENDED OFFERS SECTION */}
       <section className="bg-[hsl(var(--color-text))] py-24">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[hsl(165,60%,40%,0.2)] border border-[hsl(165,60%,40%,0.3)] text-[hsl(165,60%,60%)] text-[10px] font-bold uppercase tracking-widest mb-4">
-                <TrendingUp className="w-3 h-3" /> Live EarnKaro Offers
+                <TrendingUp className="w-3 h-3" /> Featured Card Deals
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-2">Hot Earning Offers 🔥</h2>
-              <p className="text-[hsl(215,15%,55%)] font-medium">Apply &amp; earn real cashback — up to ₹2,800 per approval.</p>
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-2">Top Recommended Offers 🔥</h2>
+              <p className="text-[hsl(215,15%,55%)] font-medium">Compare top credit cards and apply directly using official bank links.</p>
             </div>
             <Link href="/best-earning-offers" className="flex-shrink-0 px-6 py-3 bg-[hsl(165,60%,40%)] hover:bg-[hsl(165,60%,45%)] text-white rounded-xl font-bold text-sm transition-colors">
-              See All {EARNKARO_OFFERS.length} Offers →
+              See All Recommended Offers →
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {EARNKARO_OFFERS.slice(0, 3).map((offer, idx) => (
-              <div
-                key={offer.card_slug}
-                className="group bg-white/5 border border-white/10 hover:border-[hsl(165,60%,40%,0.5)] hover:bg-white/10 rounded-2xl p-6 transition-all"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-extrabold text-[hsl(215,15%,55%)] uppercase tracking-widest">#{idx + 1} Pick</span>
-                  <BadgeIndianRupee className="w-5 h-5 text-[hsl(165,60%,55%)]" />
-                </div>
-                <Link href={`/cards/${offer.card_slug}`} className="block group/title">
-                  <p className="font-bold text-white text-lg mb-1 leading-tight group-hover/title:text-[hsl(165,60%,55%)] transition-colors">{offer.card_name}</p>
-                </Link>
-                <p className="text-sm text-[hsl(215,15%,55%)] font-medium mb-4">{offer.bank_name}</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[10px] font-bold text-[hsl(215,15%,45%)] uppercase tracking-widest mb-0.5">You Earn</p>
-                    <p className="text-2xl font-black text-[hsl(165,60%,55%)]">₹{offer.commission.toLocaleString('en-IN')}</p>
+            {EARNKARO_OFFERS.slice(0, 3).map((offer, idx) => {
+              const dbCard = topOffersCards?.find(c => c.slug === offer.card_slug);
+              return (
+                <div
+                  key={offer.card_slug}
+                  className="group bg-white/5 border border-white/10 hover:border-[hsl(165,60%,40%,0.5)] hover:bg-white/10 rounded-2xl p-6 transition-all"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-extrabold text-[hsl(215,15%,55%)] uppercase tracking-widest">#{idx + 1} Pick</span>
+                    <Shield className="w-5 h-5 text-[hsl(165,60%,55%)]" />
                   </div>
-                  <a 
-                    href={offer.earnkaro_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-[hsl(165,60%,40%)] hover:bg-[hsl(165,60%,45%)] rounded-xl text-white text-sm font-bold transition-colors shadow-lg shadow-[hsl(165,60%,40%,0.2)]"
-                  >
-                    Apply Now
-                  </a>
+                  <Link href={`/cards/${offer.card_slug}`} className="block group/title">
+                    <p className="font-bold text-white text-lg mb-1 leading-tight group-hover/title:text-[hsl(165,60%,55%)] transition-colors">{offer.card_name}</p>
+                  </Link>
+                  <p className="text-sm text-[hsl(215,15%,55%)] font-medium mb-4">{offer.bank_name}</p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <div>
+                      <p className="text-[10px] font-bold text-[hsl(215,15%,45%)] uppercase tracking-widest mb-0.5">Best For</p>
+                      <p className="text-base font-bold text-white">{dbCard?.best_for || 'General spending'}</p>
+                    </div>
+                    <a 
+                      href={offer.earnkaro_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-[hsl(165,60%,40%)] hover:bg-[hsl(165,60%,45%)] rounded-xl text-white text-sm font-bold transition-colors shadow-lg shadow-[hsl(165,60%,40%,0.2)]"
+                    >
+                      Apply Now
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

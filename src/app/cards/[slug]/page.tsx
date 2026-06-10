@@ -206,18 +206,15 @@ export default async function CardDetailPage({ params }: PageProps) {
                   bankName={typedCard.bank_name}
                 />
 
-                {/* EarnKaro commission callout */}
-                {ekOffer && (
-                  <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-xl">
-                    <span className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
-                      <ShieldCheck className="w-3 h-3 text-white" />
-                    </span>
-                    <p className="text-xs text-emerald-800 font-semibold">
-                      Apply via our link &amp; earn{' '}
-                      <span className="font-extrabold text-emerald-700">₹{ekOffer.commission.toLocaleString('en-IN')} cashback</span>{' '}in your EarnKaro wallet.
-                    </p>
-                  </div>
-                )}
+                {/* Trust Callout */}
+                <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-emerald-50/50 border border-emerald-500/20 rounded-xl">
+                  <span className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <ShieldCheck className="w-3 h-3 text-white" />
+                  </span>
+                  <p className="text-xs text-emerald-800 font-semibold">
+                    Direct Official Bank Application Link
+                  </p>
+                </div>
               </div>
             </div>
           </div>

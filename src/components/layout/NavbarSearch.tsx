@@ -218,7 +218,7 @@ export default function NavbarSearch({ className }: NavbarSearchProps) {
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
                           <span className="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            ₹{offer.commission.toLocaleString('en-IN')} Cashback
+                            Verified Link
                           </span>
                         </div>
                       </button>

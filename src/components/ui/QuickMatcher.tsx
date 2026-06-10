@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Sparkles, ArrowRight, ShieldCheck, RefreshCw, BadgeIndianRupee } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, RefreshCw } from 'lucide-react';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 
 export default function QuickMatcher() {
@@ -16,43 +16,36 @@ export default function QuickMatcher() {
   const getRecommendation = () => {
     if (goal === 'lifetime-free') {
       return {
-        slug: 'au-lit-credit-card',
+        slugReal: 'au-lit-credit-card',
         name: 'AU LIT Credit Card',
         reason: 'Lifetime free card that lets you customize your rewards dynamically!',
-        payout: 250,
       };
     }
     if (goal === 'travel') {
       return {
-        slug: 'axis-airtel-credit-card-review', // fallback or real slug
-        slugReal: 'axis-bank-my-zone-credit-card',
-        name: 'Axis Bank My Zone Credit Card',
-        reason: 'Offers complimentary lounge access and Swiggy discounts at a low fee!',
-        payout: 200,
+        slugReal: 'idfc-first-mayura',
+        name: 'IDFC First Mayura Credit Card',
+        reason: 'Premium travel card offering luxury lounge access and high international rewards!',
       };
     }
     if (feature === 'amazon-flipkart' || spend > 25000) {
       return {
-        slug: 'sbi-cashback-credit-card-review',
         slugReal: 'sbi-cashback-credit-card',
         name: 'SBI Cashback Credit Card',
         reason: 'Undisputed cashback champion. Gives flat 5% unlimited online savings!',
-        payout: 900,
       };
     }
     // Default best-match
     return {
-      slug: 'axis-airtel-credit-card-review',
-      slugReal: 'axis-bank-airtel-credit-card',
-      name: 'Axis Bank Airtel Credit Card',
-      reason: 'Best utility card. Offers massive 25% cashback on recharges and 10% on Swiggy!',
-      payout: 1000,
+      slugReal: 'axis-myzone-rupay',
+      name: 'Axis Bank MyZone RuPay Credit Card',
+      reason: 'Excellent value with Swiggy discounts, movie BOGO, and UPI scan support!',
     };
   };
 
   const recommendation = getRecommendation();
   const matchedOffer = EARNKARO_OFFERS.find(
-    (o) => o.card_slug === recommendation.slugReal || o.card_name.includes(recommendation.name)
+    (o) => o.card_slug === recommendation.slugReal && o.is_active
   );
   const applyUrl = matchedOffer?.earnkaro_url ?? '/cards';
 
@@ -212,12 +205,11 @@ export default function QuickMatcher() {
 
           <div className="bg-slate-800/50 border border-slate-800 p-4 rounded-2xl max-w-sm mx-auto mb-6 flex items-center justify-between text-left">
             <div>
-              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                Payout Bonus via CreditCompass
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                Annual Savings Estimate
               </p>
               <p className="text-xl font-black text-emerald-400 flex items-center gap-1">
-                <BadgeIndianRupee className="w-4 h-4" /> ₹
-                {matchedOffer ? matchedOffer.commission.toLocaleString('en-IN') : recommendation.payout}
+                <Sparkles className="w-4 h-4 text-emerald-400" /> ₹3,000+ / yr
               </p>
             </div>
             <a

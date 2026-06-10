@@ -105,7 +105,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                       <p className="font-bold text-[hsl(var(--color-text))]">{offer.card_name}</p>
                       <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">{offer.bank_name}</p>
                       <p className="text-xs text-emerald-700 font-extrabold mt-1">
-                        Earn ₹{offer.commission.toLocaleString('en-IN')} via EarnKaro on approval
+                        {article.language === 'hi' ? '✓ Direct official bank link' : '✓ Direct bank application link'}
                       </p>
                     </div>
                     <a

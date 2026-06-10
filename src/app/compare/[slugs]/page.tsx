@@ -288,11 +288,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   bankName={card.bank_name}
                 />
 
-                {ek && (
-                  <p className="mt-2 text-xs text-emerald-700 font-semibold">
-                    💰 Earn ₹{ek.commission.toLocaleString('en-IN')} cashback via EarnKaro
-                  </p>
-                )}
+
               </div>
             ))}
           </div>

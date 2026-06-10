@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { EARNKARO_OFFERS } from '@/data/earnkaro-offers';
 import { cn } from '@/lib/utils';
-import { ChevronRight, CheckCircle, BadgeIndianRupee, ExternalLink, RotateCcw } from 'lucide-react';
+import { ChevronRight, CheckCircle, ExternalLink, RotateCcw } from 'lucide-react';
 
 // ─── Quiz Data ───────────────────────────────────────────────
 const STEPS = [
@@ -68,37 +68,37 @@ function getRecommendations(answers: Record<string, string>): typeof EARNKARO_OF
 
   // UPI / daily
   if (goal === 'upi') {
-    prioritySlugs.push('axis-airtel-rupay', 'axis-indian-oil-rupay', 'au-lit-credit-card', 'idfc-first-swyp');
+    prioritySlugs.push('kiwi-upi-credit-card', 'axis-myzone-rupay', 'axis-neo-rupay');
   }
 
   // Cashback + online
   if (goal === 'cashback' || usage === 'online') {
-    prioritySlugs.push('sbi-cashback-credit-card', 'sbi-simplyclick-credit-card', 'idfc-first-swyp');
+    prioritySlugs.push('sbi-cashback-credit-card', 'sbi-simplyclick-credit-card', 'hdfc-millennia', 'axis-flipkart');
   }
 
   // Travel
   if (goal === 'travel') {
-    prioritySlugs.push('scapia-credit-card', 'idfc-first-mayura', 'hdfc-irctc-credit-card');
+    prioritySlugs.push('idfc-first-mayura', 'bob-eterna', 'hdfc-irctc-credit-card');
   }
 
   // Fuel
   if (usage === 'fuel') {
-    prioritySlugs.push('axis-indian-oil-rupay', 'sbi-bpcl-credit-card');
+    prioritySlugs.push('idfc-first-power-plus', 'axis-neo-rupay');
   }
 
   // Dining
   if (usage === 'dining') {
-    prioritySlugs.push('axis-airtel-rupay', 'kotak-league-platinum');
+    prioritySlugs.push('axis-myzone-rupay', 'kotak-league-platinum');
   }
 
   // Free only
   if (fee === 'free') {
-    prioritySlugs.push('idfc-first-swyp', 'au-lit-credit-card', 'axis-airtel-rupay', 'scapia-credit-card', 'idfc-first-wow');
+    prioritySlugs.push('au-lit-credit-card', 'idfc-first-swyp', 'kiwi-upi-credit-card', 'yes-bank-pop-club', 'idfc-first-wow');
   }
 
   // Premium
   if (fee === 'any' && income === 'premium') {
-    prioritySlugs.push('idfc-first-mayura');
+    prioritySlugs.push('idfc-first-mayura', 'bob-eterna');
   }
 
   // Deduplicate while preserving order
@@ -249,9 +249,9 @@ export default function CardQuiz() {
                       <p className="font-extrabold text-[hsl(var(--color-text))] text-lg leading-tight">{offer.card_name}</p>
                       <p className="text-sm text-[hsl(var(--color-text-secondary))] font-medium">{offer.bank_name}</p>
                       <div className="flex items-center gap-1.5 mt-2">
-                        <BadgeIndianRupee className="w-3.5 h-3.5 text-emerald-600" />
-                        <span className="text-sm font-extrabold text-emerald-600">
-                          {isHindi ? `Apply karo — ₹${offer.commission.toLocaleString('en-IN')} earn karo` : `Earn ₹${offer.commission.toLocaleString('en-IN')} on approval`}
+                        <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                        <span className="text-sm font-bold text-emerald-600">
+                          {isHindi ? 'Direct official bank link' : 'Verified bank application'}
                         </span>
                       </div>
                     </div>
