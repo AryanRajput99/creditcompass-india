@@ -95,13 +95,13 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
 
       {/* Key Metrics - High Contrast Grid */}
       <div className="grid grid-cols-2 gap-px bg-[hsl(var(--color-border))] border border-[hsl(var(--color-border))] rounded-xl overflow-hidden shadow-sm">
-        <div className="bg-white p-4 flex flex-col gap-1">
+        <div className="bg-[hsl(var(--color-bg))] p-4 flex flex-col gap-1">
           <span className="text-[11px] font-bold text-[hsl(var(--color-text-secondary))] uppercase tracking-wider">Joining Fee</span>
           <span className="text-base font-extrabold text-[hsl(var(--color-text))]">
             {card.joining_fee === 0 ? 'Free' : formatRupee(card.joining_fee)}
           </span>
         </div>
-        <div className="bg-white p-4 flex flex-col gap-1">
+        <div className="bg-[hsl(var(--color-bg))] p-4 flex flex-col gap-1">
           <span className="text-[11px] font-bold text-[hsl(var(--color-text-secondary))] uppercase tracking-wider">Annual Fee</span>
           <span className="text-base font-extrabold text-[hsl(var(--color-text))]">
             {card.is_lifetime_free ? (

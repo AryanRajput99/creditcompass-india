@@ -2,27 +2,27 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DESIGN TOKENS — CreditCompass (Premium Fintech)
+   DESIGN TOKENS — CreditCompass (Warm Trust Theme)
    ============================================================ */
 :root {
-  /* Brand Colors - Sophisticated Indigo/Slate */
-  --color-primary: 226 71% 40%;        /* Deep Indigo (#1E40AF) */
-  --color-primary-hover: 226 71% 35%;
-  --color-accent: 250 84% 54%;         /* Vibrant Violet for highlights */
+  /* Brand Colors - Warm Navy & Teal */
+  --color-primary: 210 60% 24%;         /* Deep Navy (#1B3A5C) */
+  --color-primary-hover: 210 60% 18%;
+  --color-accent: 165 60% 40%;          /* Teal/Green accent */
   
-  /* Backgrounds */
-  --color-bg: 0 0% 100%;               /* Pure White */
-  --color-bg-secondary: 220 14% 98%;   /* Ultra-light cool grey (#F8FAFC) */
-  --color-bg-tertiary: 210 20% 98%;    /* Subtle contrast */
+  /* Backgrounds - Warm Cream */
+  --color-bg: 36 33% 97%;               /* Warm Cream (#FAF8F4) */
+  --color-bg-secondary: 36 25% 94%;     /* Slightly deeper cream (#F3F0EB) */
+  --color-bg-tertiary: 36 20% 91%;      /* Card hover cream */
 
-  /* Text - High Contrast Hierarchy */
-  --color-text: 222 47% 11%;           /* Near Black (#020817) */
-  --color-text-secondary: 215 16% 47%; /* Muted slate (#64748B) */
-  --color-text-tertiary: 215 14% 65%;  /* Very light text */
+  /* Text - High Contrast Navy Hierarchy */
+  --color-text: 215 40% 16%;            /* Dark Navy (#172A3A) */
+  --color-text-secondary: 215 15% 45%;  /* Muted navy */
+  --color-text-tertiary: 215 10% 62%;   /* Light muted */
 
-  /* Borders - Ultra Subtle */
-  --color-border: 214 32% 91%;         /* Soft border (#E2E8F0) */
-  --color-border-hover: 214 20% 80%;
+  /* Borders - Warm & Soft */
+  --color-border: 30 15% 87%;           /* Warm border (#E3DDD5) */
+  --color-border-hover: 30 12% 78%;
 
   /* Radii - Modern Curves */
   --radius-sm: 8px;
@@ -70,20 +70,20 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: hsl(var(--color-border));
   border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: hsl(var(--color-border-hover));
 }
 
 /* ============================================================
-   REUSABLE UI COMPONENTS (Stripe/Linear Aesthetic)
+   REUSABLE UI COMPONENTS
    ============================================================ */
 @layer components {
 /* Surface / Card Base */
 .surface-card {
-  background: #FFFFFF;
+  background: hsl(36 33% 99%);
   border: 1px solid hsl(var(--color-border));
   border-radius: var(--radius-lg);
   box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
@@ -91,7 +91,7 @@
 }
 
 .surface-card:hover {
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 12px 24px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 12px 24px rgba(0,0,0,0.05);
   transform: translateY(-2px);
   border-color: hsl(var(--color-border-hover));
 }
@@ -115,14 +115,14 @@
 
 .btn-primary {
   background: hsl(var(--color-text));
-  color: #FFFFFF;
+  color: hsl(var(--color-bg));
   padding: 10px 20px;
   border: 1px solid hsl(var(--color-text));
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .btn-primary:hover {
-  background: #000000;
+  background: hsl(215 40% 10%);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -132,16 +132,16 @@
   padding: 12px 24px;
   border: none;
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+  box-shadow: 0 2px 8px rgba(27, 58, 92, 0.2);
 }
 
 .btn-apply:hover {
   background: hsl(var(--color-primary-hover));
-  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+  box-shadow: 0 4px 12px rgba(27, 58, 92, 0.3);
 }
 
 .btn-secondary {
-  background: #FFFFFF;
+  background: hsl(var(--color-bg));
   color: hsl(var(--color-text));
   border: 1px solid hsl(var(--color-border));
   padding: 10px 20px;
@@ -174,6 +174,23 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: float 10s ease-in-out infinite;
 }
 
 .skeleton {

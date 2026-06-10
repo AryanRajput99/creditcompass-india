@@ -31,7 +31,7 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[hsl(var(--color-border))] transition-all">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--color-bg)/0.85)] backdrop-blur-md border-b border-[hsl(var(--color-border))] transition-all">
       {/* Subtle Utility Bar */}
       <div className="bg-[hsl(var(--color-bg-secondary))] border-b border-[hsl(var(--color-border))/50 py-1.5 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end gap-6">
@@ -84,7 +84,7 @@ export default function Navbar() {
 
                 {/* Dropdown Menu */}
                 {link.children && openDropdown === link.label && (
-                  <div className="absolute top-[70px] left-1/2 -translate-x-1/2 w-72 bg-white rounded-2xl border border-[hsl(var(--color-border))] shadow-2xl py-3 animate-fade-in-up overflow-hidden">
+                  <div className="absolute top-[70px] left-1/2 -translate-x-1/2 w-72 bg-[hsl(var(--color-bg))] rounded-2xl border border-[hsl(var(--color-border))] shadow-2xl py-3 animate-fade-in-up overflow-hidden">
                     <div className="grid grid-cols-1">
                       {link.children.map((child) => (
                          <Link
@@ -126,7 +126,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-[hsl(var(--color-border))] shadow-2xl h-screen overflow-y-auto">
+        <div className="lg:hidden bg-[hsl(var(--color-bg))] border-t border-[hsl(var(--color-border))] shadow-2xl h-screen overflow-y-auto">
           <div className="px-6 py-6 space-y-4">
             <div className="px-4 pb-2">
               <NavbarSearch className="w-full" />
