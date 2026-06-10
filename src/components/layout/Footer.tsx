@@ -37,17 +37,7 @@ const FOOTER_LINKS = {
 export default function Footer() {
   return (
     <footer className="bg-[hsl(var(--color-bg-secondary))] border-t border-[hsl(var(--color-border))]">
-      {/* Affiliate Disclosure Banner */}
-      <div className="bg-amber-50 border-b border-amber-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-start gap-3">
-            <Shield className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
-            <p className="text-[12px] text-amber-900 leading-relaxed">
-              <strong className="font-bold">100% Unbiased Guarantee:</strong> Our recommendations are completely unbiased. We compare cards based on their mathematical value and real-world benefits to the customer, not affiliate payouts. While we may earn a commission when you apply through our links, it never influences our editorial ratings or card recommendations.
-            </p>
-          </div>
-        </div>
-      </div>
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Top section */}
