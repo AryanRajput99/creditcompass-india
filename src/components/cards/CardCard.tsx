@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Star, CheckCircle, CreditCard as CardIcon,
+  Star, CheckCircle, XCircle, CreditCard as CardIcon,
   ArrowRight, Plus, GitCompare, BadgeIndianRupee
 } from 'lucide-react';
 import { CreditCard } from '@/types';
@@ -61,13 +61,7 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
         </div>
       )}
 
-      {/* EarnKaro Payout Badge */}
-      {ekOffer && (
-        <div className="absolute top-0 left-6 flex items-center gap-1.5 px-3 py-1 bg-emerald-600 text-white rounded-b-lg shadow-sm z-10">
-          <BadgeIndianRupee className="w-3 h-3" />
-          <span className="text-[10px] font-extrabold uppercase tracking-widest">Earn ₹{ekOffer.commission.toLocaleString('en-IN')}</span>
-        </div>
-      )}
+      {/* EarnKaro Payout Badge Hidden to preserve unbias */}
 
       {/* Card Header */}
       <div className="flex flex-col gap-4">
@@ -131,18 +125,24 @@ export default function CardCard({ card, onCompare, isInCompare, onApplyClick }:
           </div>
         )}
         
-        {card.pros.length > 0 && (
-          <ul className="space-y-2.5">
-            {card.pros.slice(0, 2).map((pro, i) => (
-              <li key={i} className="flex items-start gap-2 text-[13px] text-[hsl(var(--color-text-secondary))] leading-snug">
-                <div className="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <CheckCircle className="w-3 h-3 text-emerald-600" />
-                </div>
-                <span>{pro}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className="space-y-2.5">
+          {card.pros && card.pros.length > 0 && (
+            <li className="flex items-start gap-2 text-[13px] text-[hsl(var(--color-text-secondary))] leading-snug">
+              <div className="w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <CheckCircle className="w-3 h-3 text-emerald-600" />
+              </div>
+              <span className="line-clamp-2">{card.pros[0]}</span>
+            </li>
+          )}
+          {card.cons && card.cons.length > 0 && (
+            <li className="flex items-start gap-2 text-[13px] text-[hsl(var(--color-text-secondary))] leading-snug">
+              <div className="w-4 h-4 rounded-full bg-rose-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <XCircle className="w-3 h-3 text-rose-600" />
+              </div>
+              <span className="line-clamp-2">{card.cons[0]}</span>
+            </li>
+          )}
+        </ul>
       </div>
 
       {/* Actions */}

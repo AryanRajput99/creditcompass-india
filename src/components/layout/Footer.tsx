@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="flex items-start gap-3">
             <Shield className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
             <p className="text-[12px] text-amber-900 leading-relaxed">
-              <strong className="font-bold">Affiliate Disclosure:</strong> CreditCompass India may earn a commission when you apply for a credit card through our links. This helps us keep the site free for users. We only recommend products we believe provide value. Commission does not affect our editorial ratings.
+              <strong className="font-bold">100% Unbiased Guarantee:</strong> Our recommendations are completely unbiased. We compare cards based on their mathematical value and real-world benefits to the customer, not affiliate payouts. While we may earn a commission when you apply through our links, it never influences our editorial ratings or card recommendations.
             </p>
           </div>
         </div>
