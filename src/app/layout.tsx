@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
-import AffiliateDisclosureBanner from '@/components/ui/AffiliateDisclosureBanner';
+
 import CanonicalLink from '@/components/seo/CanonicalLink';
 
 export const metadata: Metadata = {
@@ -80,7 +80,6 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <AffiliateDisclosureBanner />
       </body>
     </html>
   );
